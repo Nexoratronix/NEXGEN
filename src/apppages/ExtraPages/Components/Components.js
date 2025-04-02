@@ -20,7 +20,7 @@ import Grid from "./Grid";
 import Video from "./Video";
 
 const Components = () => {
-  document.title = "Components | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title = "Components | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <Section />

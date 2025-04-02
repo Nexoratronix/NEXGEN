@@ -1,8 +1,10 @@
 
 
-import ForgotPassword from "@/apppages/ExtraPages/ForgotPassword";
 
 
-export default function ForgotPasswordPage() {
-  return <ForgotPassword/>;
+import ResetPassword from "@/apppages/ExtraPages/ResetPassword";
+
+
+export default function ResetPasswordPage() {
+  return <ResetPassword />;
 }

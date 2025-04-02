@@ -7,7 +7,7 @@ import Popular from "./Popular";
 import Sidebar from "./Sidebar";
 
 const JobList = () => {
-  document.title = "Job List | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title = "Job List | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <Section />

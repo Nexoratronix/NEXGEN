@@ -5,8 +5,8 @@ import BookmarkJobListing from "./BookmarkJobListing";
 import Section from "./Section";
 
 const BookMarkJobs = () => {
-  document.title =
-    "Bookmarks Jobs | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title =
+  //   "Bookmarks Jobs | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <Section />

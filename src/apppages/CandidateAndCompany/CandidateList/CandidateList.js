@@ -6,8 +6,8 @@ import Section from "./Section";
 import Pagination from "../../Jobs/JobList2/Pagination";
 
 const CandidateList = () => {
-  document.title =
-    "Candidate List | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title =
+  //   "Candidate List | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <Section />

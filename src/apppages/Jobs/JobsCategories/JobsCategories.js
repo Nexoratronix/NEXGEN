@@ -4,8 +4,8 @@ import Cta from "./Cta";
 import Section from "./Section";
 
 const JobsCategories = () => {
-  document.title =
-    "Job Categories | NEXGEN Staffing";
+  // document.title =
+  //   "Job Categories | NEXGEN Staffing";
   return (
     <React.Fragment>
       <Section />

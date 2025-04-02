@@ -3,7 +3,7 @@ import Section from "../../Company/Faqs/Section";
 import FaqContent from "../../Company/Faqs/FaqContent";
 
 const Faqs = () => {
-  document.title = "FAQs | NEXGEN Staffing";
+  // document.title = "FAQs | NEXGEN Staffing";
   return (
     <React.Fragment>
       <Section />

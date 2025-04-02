@@ -34,7 +34,7 @@ const ComingSoon = () => {
       );
     }
   };
-  document.title = "Coming Soon | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title = "Coming Soon | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <div>

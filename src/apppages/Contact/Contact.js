@@ -4,7 +4,7 @@ import ContactContent from "../Contact/ContactContent";
 import Head from "next/head";
 
 const Contact = () => {
-  document.title = "Contact | NEXGEN Staffing";
+  // document.title = "Contact | NEXGEN Staffing";
   <Head>
         <title>Contact [Your Company Name] | IT Staffing & Recruitment in the US</title>
         <meta name="description" content="Contact NEXGEN Staffing for expert IT staffing in the US. Hire IT candidates today! Reach us via phone, email, or form for fast tech talent solutions." />

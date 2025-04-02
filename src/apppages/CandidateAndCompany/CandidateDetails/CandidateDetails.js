@@ -5,8 +5,8 @@ import RightSideContent from "./RightSideContent";
 import Section from "./Section";
 
 const CandidateDetails = () => {
-  document.title =
-    "Candidate Details | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title =
+  //   "Candidate Details | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <Section />

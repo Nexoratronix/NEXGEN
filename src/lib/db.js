@@ -9,11 +9,7 @@ let clientPromise;
 if (!uri) {
   throw new Error("Please add your MongoDB URI to .env.local");
 }
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  autoEncryption: undefined, // Explicitly disable encryption
-};
+const options = {};
 if (process.env.NODE_ENV === "development") {
   if (!global._mongoClientPromise) {
     client = new MongoClient(uri);
@@ -39,7 +35,7 @@ if (process.env.NODE_ENV === "development") {
 
 export async function connectToDatabase() {
   const client = await clientPromise;
-  const db = client.db(process.env.DB_NAME);
+  const db = client.db(process.env.DB_NAME || "NEXGEN");
   console.log("Database selected:", db.databaseName);
   return { db, client };
 }

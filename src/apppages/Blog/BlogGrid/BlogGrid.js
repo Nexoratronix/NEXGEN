@@ -10,7 +10,7 @@ import Tags from "../../Blog/BlogGrid/Tags";
 import SocialConnect from "../../Blog/BlogGrid/SocialConnect";
 
 const BlogGrid = () => {
-  document.title = "Blog Grid | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title = "Blog Grid | NEXGEN Staffing - Job Listing Template | Themesdesign";
 
   return (
     <React.Fragment>

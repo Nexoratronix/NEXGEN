@@ -8,7 +8,7 @@ import JobVacancyPost2 from "./JobVacancyPost2";
 import Pagination from "../JobList2/Pagination";
 
 const JobList2 = () => {
-  document.title = "Job List2 | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title = "Job List2 | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <Section />

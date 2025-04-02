@@ -8,7 +8,7 @@ import Selected from "./Selected";
 import Pagination from "../JobList2/Pagination";
 
 const JobGrid = () => {
-  document.title = "Job Grid | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title = "Job Grid | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <Section />
