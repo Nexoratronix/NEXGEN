@@ -1,0 +1,30 @@
+.messageContainer {
+    transition: all 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+  
+  .messageContainer.show {
+    max-height: 50px;
+    opacity: 1;
+  }
+  
+  .messageContainer.hide {
+    max-height: 0;
+    opacity: 0;
+  }
+  
+  .signInButton {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .signInButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .try{
+    margin-top: 10rem !important;
+    /* padding-top: 20rem !important; */
+  }

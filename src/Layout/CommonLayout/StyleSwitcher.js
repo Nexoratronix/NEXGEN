@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import  Link  from "next/link";
 
 const StyleSwitcher = () => {
   const [switcher, setSwitcher] = useState(false);
@@ -37,21 +37,21 @@ const StyleSwitcher = () => {
               <Link
                 className="color-list color1"
                 onClick={() => setColor("purple")}
-                to="#"
+                href="#"
               ></Link>
             </li>
             <li>
               <Link
                 className="color-list color2"
                 onClick={() => setColor("blue")}
-                to="#"
+                href="#"
               ></Link>
             </li>
             <li>
               <Link
                 className="color-list color3"
                 onClick={() => setColor("green")}
-                to="#"
+                href="#"
               ></Link>
             </li>
           </ul>

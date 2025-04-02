@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Container } from "reactstrap";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import Image from "next/image";
 import whiteLogo from "../../assets/images/logo/NexGenlogowithbg.png";
 
 const Footer = () => {
@@ -40,8 +41,8 @@ const Footer = () => {
             <Col lg={4}>
               <div className="footer-item mt-4 mt-lg-0 me-lg-5">
                 <div className="d-flex">
-                  <Link to="/">
-                    <img
+                  <Link href="/">
+                    <Image
                       src={whiteLogo}
                       height="90"
                       alt=""
@@ -58,13 +59,13 @@ const Footer = () => {
                 </div>
                 {/* <h3 className="text-white">Your IT Staffing Partner in the US</h3> */}
                 <p className="text-white">
-                  We connect US businesses with top IT talent for temporary, permanent, or remote roles. Based here, we understand tech trends and deliver tailored solutions. From developers to cybersecurity experts, we’ve got you covered for 2025 and beyond.
+                  We connect US businesses with top IT talent for temporary, permanent, or remote roles. Based here, we understand tech trends and deliver tailored solutions. From developers href cybersecurity experts, we’ve got you covered for 2025 and beyond.
                 </p>
                 <p className="text-white mt-3">Follow Us on:</p>
                 <ul className="footer-social-menu list-inline mb-0">
                   {footerIcons.map((footerIcondetails, key) => (
                     <li className="list-inline-item" key={key}>
-                      <Link to="#">
+                      <Link href="#">
                         <i className={footerIcondetails.socialIcon}></i>
                       </Link>
                     </li>
@@ -84,7 +85,7 @@ const Footer = () => {
                         <ul className="list-unstyled footer-list mb-0" key={key}>
                           <li className="text-white">
                             <Link
-                              to={menuInner.link}
+                              href={menuInner.link}
                               className="text-white text-decoration-none"
                             >
                               <i className="mdi mdi-chevron-right text-white"></i>{" "}

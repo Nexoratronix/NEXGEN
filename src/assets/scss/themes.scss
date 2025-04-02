@@ -1,7 +1,8 @@
 @import "../scss/bootstrap.scss";
 @import "../scss/icons.scss";
 @import "../scss/app.scss";
-
+// @import 'bootstrap-overrides/reboot';
+@import 'bootstrap/scss/bootstrap';
 //SignUp Modal close
 .close {
   background: transparent;

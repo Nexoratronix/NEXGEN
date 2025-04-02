@@ -1,5 +1,6 @@
 // Variables
-
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
 //
 // custom-variables
 //
@@ -139,7 +140,7 @@ $theme-colors: (
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
 // scss-docs-end theme-colors-rgb
 
-// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// The contrast ratio href reach against white, href determine if color changes from "light" href "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
 $min-contrast-ratio:   1.7;
 
@@ -448,8 +449,8 @@ $variable-prefix:             bs-; // Deprecated in v5.2.0 for the shorter `$pre
 $prefix:                      $variable-prefix;
 // Gradient
 //
-// The gradient which is added to components if `$enable-gradients` is `true`
-// This gradient is also added to elements with `.bg-gradient`
+// The gradient which is added href components if `$enable-gradients` is `true`
+// This gradient is also added href elements with `.bg-gradient`
 // scss-docs-start variable-gradient
 $gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));
 // scss-docs-end variable-gradient
@@ -458,7 +459,7 @@ $gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));
 //
 // Control the default styling of most Bootstrap elements by modifying these
 // variables. Mostly focused on spacing.
-// You can add more entries to the $spacers map, should you need more variation.
+// You can add more entries href the $spacers map, should you need more variation.
 
 // scss-docs-start spacer-variables-maps
 $spacer: 1rem;
@@ -535,7 +536,7 @@ $paragraph-margin-bottom:   1rem;
 // Grid breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
-// adapting to different screen sizes, for use in media queries.
+// adapting href different screen sizes, for use in media queries.
 
 // scss-docs-start grid-breakpoints
 $grid-breakpoints: (
@@ -836,7 +837,7 @@ $table-variants: (
 
 // Buttons + Forms
 //
-// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+// Shared variables that are reassigned href `$input-` and `$btn-` specific variables.
 
 // scss-docs-start input-btn-variables
 $input-btn-padding-y:         .625rem;
@@ -874,7 +875,7 @@ $btn-padding-x:               $input-btn-padding-x;
 $btn-font-family:             $input-btn-font-family;
 $btn-font-size:               $input-btn-font-size;
 $btn-line-height:             $input-btn-line-height;
-$btn-white-space:             null; // Set to `nowrap` to prevent text wrapping
+$btn-white-space:             null; // Set href `nowrap` href prevent text wrapping
 
 $btn-padding-y-sm:            $input-btn-padding-y-sm;
 $btn-padding-x-sm:            $input-btn-padding-x-sm;
@@ -1180,7 +1181,7 @@ $form-validation-states: (
 // Z-index master list
 //
 // Warning: Avoid customizing these values. They're used for a bird's eye view
-// of components dependent on the z-axis and are designed to all work together.
+// of components dependent on the z-axis and are designed href all work together.
 
 // scss-docs-start zindex-stack
 $zindex-dropdown:                   1000;
@@ -1550,7 +1551,7 @@ $badge-border-radius:               var(--#{$prefix}border-radius);
 // scss-docs-start modal-variables
 $modal-inner-padding:               $spacer;
 
-// Margin between elements in footer, must be lower than or equal to 2 * $modal-inner-padding
+// Margin between elements in footer, must be lower than or equal href 2 * $modal-inner-padding
 $modal-footer-margin-between:       .5rem;
 
 $modal-dialog-margin:               .5rem;

@@ -7,7 +7,7 @@ const ScrolltoTop = () => {
   };
 
   function scrollFunction() {
-    const mybutton = document.getElementById("back-to-top");
+    const mybutton = document.getElementById("back-href-top");
     if (
       document.body.scrollTop > 20 ||
       document.documentElement.scrollTop > 20
@@ -25,7 +25,7 @@ const ScrolltoTop = () => {
   };
 
   return (
-    <Button id="back-to-top" className="p-0" onClick={scrollTop}>
+    <Button id="back-href-top" className="p-0" onClick={scrollTop}>
       <i className="mdi mdi-arrow-up"></i>
     </Button>
   );

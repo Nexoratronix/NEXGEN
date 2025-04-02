@@ -1,7 +1,8 @@
 // Dark color mode variables
 //
 // Custom variables for the `[data-bs-theme="dark"]` theme. Use this as a starting point for your own custom color modes by creating a new theme-specific file like `_variables-dark.scss` and adding the variables you need.
-
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
 //
 // Global colors
 //

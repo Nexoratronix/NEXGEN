@@ -49,10 +49,11 @@ import Error404 from "../pages/ExtraPages/Error404";
 import Components from "../pages/ExtraPages/Components/Components";
 
 //profile section(User Profile)
-import BookMarkJobPost from "../pages/Profile/BookMarkJobPost/BookMarkJobPost";
-import ManageJobs from "../pages/Profile/ManageJobs/ManageJobs";
-import BookMarkJobs from "../pages/Profile/BookMarkJobs/BookMarkJobs";
-import MyProfile from "../pages/Profile/MyProfile/MyProfile";
+import BookMarkJobPost from "../pages/profile/BookMarkJobPost/BookMarkJobPost";
+import ManageJobs from "../pages/profile/ManageJobs/ManageJobs";
+import BookMarkJobs from "../pages/profile/BookMarkJobs/BookMarkJobs";
+import MyProfile from "../pages/profile/MyProfile/MyProfile";
+import ForgotPassword from "@/apppages/ExtraPages/ForgotPassword";
 
 //Home Section
 // const Layout1 = React.lazy(() => import('../pages/Home/Layout1/Layout1'));
@@ -115,6 +116,7 @@ const authRoutes = [
   { path: "/resetpassword", component: <ResetPassword /> },
   { path: "/signout", component: <SignOut /> },
   { path: "/signup", component: <SignUp /> },
-  { path: "/signin", component: <SignIn /> }
+  { path: "/signin", component: <SignIn /> },
+  { path: "/forgot-password", component: <ForgotPassword /> }
 ];
 export { userRoutes, authRoutes };
