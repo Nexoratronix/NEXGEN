@@ -1,5 +1,5 @@
 
-import SignUp from '@/apppages/ExtraPages/SignUp';
+
 import SuperadminDashboard from '../dashboard/superadmin';
 
 

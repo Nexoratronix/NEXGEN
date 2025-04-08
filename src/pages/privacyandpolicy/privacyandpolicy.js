@@ -1,6 +1,10 @@
-import PrivacyAndPolicy from '@/apppages/Company/PrivacyAndPolicy/PrivacyAndPolicy';
 
+import dynamic from 'next/dynamic';
 
-export default function PrivacyAndPolicyPage() {
+const PrivacyAndPolicy = dynamic(() => import('@/apppages/Company/PrivacyAndPolicy/PrivacyAndPolicy'), {
+  ssr: false,
+});
+
+export default function PrivacyPolicyPage() {
   return <PrivacyAndPolicy />;
 }

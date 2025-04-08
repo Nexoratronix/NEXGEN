@@ -1,6 +1,10 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    appDir: false, // Explicitly disable App Router to use Pages Router
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -17,4 +21,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig; 
+export default nextConfig;

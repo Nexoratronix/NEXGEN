@@ -6,9 +6,10 @@ import Section from "./Section";
 import Counter from "./Counter";
 import Features from "./Features";
 import Cta from "./Cta";
-import CompanyTestimonal from "./CompanyTestimonal";
+// import CompanyTestimonal from "./CompanyTestimonal";
 // import Team from "../Team/Team"; // Commented out
 import CompanyDetails from "../../CandidateAndCompany/CompanyDetails/CompanyDetails";
+import CompanyTestimonal from "./CompanyTestimonal";
 
 const AboutUs = () => {
   return (

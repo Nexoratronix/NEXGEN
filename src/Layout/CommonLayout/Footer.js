@@ -5,6 +5,7 @@ import Image from "next/image";
 import whiteLogo from "../../assets/images/logo/NexGenlogowithbg.png";
 
 const Footer = () => {
+  if (typeof window === "undefined") return null;
   const footer = [
     {
       id: 1,

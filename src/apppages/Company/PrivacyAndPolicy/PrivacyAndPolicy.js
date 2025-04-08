@@ -3,8 +3,8 @@ import Section from "./Section";
 import PrivacyAndPolicyPage from "../../Company/PrivacyAndPolicy/PrivacyAndPolicyPage";
 
 const PrivacyAndPolicy = () => {
-  document.title =
-    "Privacy & Policy | NEXGEN Staffing";
+  // document.title =
+  //   "Privacy & Policy | NEXGEN Staffing";
   return (
     <React.Fragment>
       <Section />

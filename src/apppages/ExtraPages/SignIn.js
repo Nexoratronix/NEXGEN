@@ -317,7 +317,7 @@ const SignIn = () => {
       });
 
       const data = await response.json();
-      if (response.ok) {
+      if (response.ok ) {
         setMessage(data.message);
         if (rememberMe) {
           localStorage.setItem("rememberedEmail", email);
@@ -326,7 +326,7 @@ const SignIn = () => {
         }
 
         // Store the token in cookies (needed for /api/auth/me)
-        document.cookie = `token=${data.accessToken}; path=/; max-age=3600`;
+        // document.cookie = `token=${data.accessToken}; path=/; max-age=3600`;
 
         const token = data.accessToken;
         const base64Url = token.split(".")[1];

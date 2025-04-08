@@ -1,8 +1,6 @@
-// import Services from '@/apppages/Company/Services/Services';
+// pages/services.js
+import dynamic from 'next/dynamic';
 
-import Services from "@/apppages/Company/Services/Services";
+const Services = dynamic(() => import('@/apppages/Company/Services/Services'), { ssr: false });
 
-
-export default function ServicesPage() {
-  return <Services/>;
-}
+export default Services;

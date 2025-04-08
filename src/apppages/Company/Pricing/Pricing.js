@@ -4,7 +4,7 @@ import PricingPage from "../../Company/Pricing/PricingPage";
 import Cta from "../../Company/Pricing/Cta";
 
 const Pricing = () => {
-  document.title = "Pricing | NEXGEN Staffing - Job Listing Template | Themesdesign";
+  // document.title = "Pricing | NEXGEN Staffing - Job Listing Template | Themesdesign";
   return (
     <React.Fragment>
       <Section />

@@ -9,6 +9,7 @@ import resetPasswordImage from "../../assets/images/auth/reset-password.png";
 import useLoadingStore from "@/store/loading";
 
 const ResetPassword = () => {
+  console.log('Rendering ResetPassword, isServer:', typeof window === 'undefined');
   const [step, setStep] = useState(1); // Step 1: Request OTP, Step 2: Verify OTP and reset password
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
