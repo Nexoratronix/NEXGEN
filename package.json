@@ -23,7 +23,7 @@
     "formidable": "^3.5.2",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^5.9.2",
+    "mongodb": "^4.4.1",
     "nanoid": "^5.1.5",
     "next": "^15.2.4",
     "nodemailer": "^6.10.0",
