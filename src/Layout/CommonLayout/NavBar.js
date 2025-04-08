@@ -1092,27 +1092,25 @@ const NavBar = (props) => {
   // Scroll navbar
   const [navClass, setnavClass] = useState(false);
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return; // Early return for server-side rendering
-    }
+ useEffect(() => {
+  if (typeof window === "undefined") {
+    return; // Prevent SSR execution
+  }
 
-    // setIsLoading(true); // Temporarily commented out
-    const accessToken = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('accessToken='))
-      ?.split('=')[1];
-    
-    if (accessToken && !auth) {
-      try {
-        const decoded = require('jsonwebtoken').verify(accessToken, process.env.NEXTAUTH_SECRET);
-        setAuth(decoded);
-      } catch (error) {
-        setAuth(null);
-      }
+  const accessToken = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('accessToken='))
+    ?.split('=')[1];
+
+  if (accessToken && !auth) {
+    try {
+      const decoded = jwt.verify(accessToken, process.env.NEXTAUTH_SECRET);
+      setAuth(decoded);
+    } catch (error) {
+      setAuth(null);
     }
-    // setIsLoading(false); // Temporarily commented out
-  }, [auth]);
+  }
+}, [auth]);
 
   if (!auth) {
     return (
