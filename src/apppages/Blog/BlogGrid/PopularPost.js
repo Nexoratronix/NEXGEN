@@ -1,6 +1,6 @@
 import React from "react";
 import  Link  from "next/link";
-
+import Image from "next/image";
 //Import Images
 import blogImage1 from "../../../assets/images/blog/img-01.jpg";
 import blogImage2 from "../../../assets/images/blog/img-02.jpg";
@@ -46,7 +46,7 @@ const PopularPost = () => {
               className="d-flex mb-3 align-items-center pb-3 border-bottom"
               key={key}
             >
-              <img
+              <Image
                 src={popularPostDetails.postImage}
                 alt=""
                 className="widget-popular-post-img rounded"

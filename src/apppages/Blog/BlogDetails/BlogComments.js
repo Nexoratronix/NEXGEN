@@ -1,6 +1,6 @@
 import React from "react";
 import  Link  from "next/link";
-
+import Image from "next/image";
 //Import Image
 import userImage1 from "../../../assets/images/user/img-01.jpg";
 import userImage2 from "../../../assets/images/user/img-02.jpg";
@@ -13,7 +13,7 @@ const BlogComments = () => {
       <div className="mt-5">
         <div className="d-sm-flex align-items-top">
           <div className="flex-shrink-0">
-            <img
+            <Image
               className="rounded-circle avatar-md img-thumbnail"
               src={userImage1}
               alt="img"
@@ -43,7 +43,7 @@ const BlogComments = () => {
       <div className="mt-5">
         <div className="d-sm-flex align-items-top">
           <div className="flex-shrink-0">
-            <img
+            <Image
               className="rounded-circle avatar-md img-thumbnail"
               src={userImage2}
               alt="img"
@@ -70,7 +70,7 @@ const BlogComments = () => {
 
             <div className="d-sm-flex align-items-top mt-5">
               <div className="flex-shrink-0">
-                <img
+                <Image
                   className="rounded-circle avatar-md img-thumbnail"
                   src={userImage4}
                   alt="img"

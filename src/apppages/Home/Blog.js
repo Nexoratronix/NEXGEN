@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "reactstrap";
 import Link from "next/link";
-
+import Image from "next/image";
 //Import Blog
 import BlogImage1 from "../../assets/images/blog/img-01.jpg";
 import BlogImage2 from "../../assets/images/blog/img-02.jpg";
@@ -64,7 +64,7 @@ const Blog = () => {
               <Col lg={4} md={6} key={key}>
                 <div className="blog-box card p-2 mt-3">
                   <div className="blog-img position-relative overflow-hidden">
-                    <img src={blogDetails.image} alt="" className="img-fluid" />
+                    <Image src={blogDetails.image} alt="" className="img-fluid" />
                     <div className="bg-overlay"></div>
                     <div className="author">
                       <p className=" mb-0">

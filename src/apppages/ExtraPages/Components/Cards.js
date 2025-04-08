@@ -1,7 +1,7 @@
 import React from "react";
 import  Link  from "next/link";
 import { Card, CardBody, Col, Row } from "reactstrap";
-
+import Image from "next/image";
 //Import Blog images
 import blogImage1 from "../../../assets/images/blog/img-01.jpg";
 import blogImage2 from "../../../assets/images/blog/img-02.jpg";
@@ -18,7 +18,7 @@ const Cards = () => {
           <Row>
             <Col md={6}>
               <Card className="mt-4">
-                <img
+                <Image
                   className="card-img-top img-fluid"
                   src={blogImage1}
                   alt="Card cap"
@@ -37,7 +37,7 @@ const Cards = () => {
             </Col>
             <Col md={6}>
               <Card className="mt-4">
-                <img
+                <Image
                   className="card-img-top img-fluid"
                   src={blogImage3}
                   alt="Card cap"
@@ -52,7 +52,7 @@ const Cards = () => {
             </Col>
             <Col md={6}>
               <Card className="mt-4">
-                <img
+                <Image
                   className="card-img-top img-fluid"
                   src={blogImage2}
                   alt="Card cap"
@@ -80,7 +80,7 @@ const Cards = () => {
                     Support card subtitle
                   </h6>
                 </CardBody>
-                <img className="img-fluid" src={blogImage1} alt="Card cap" />
+                <Image className="img-fluid" src={blogImage1} alt="Card cap" />
                 <CardBody>
                   <p className="card-text">
                     Some quick example text href build on the card title and make

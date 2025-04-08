@@ -1,7 +1,7 @@
 import React from "react";
 import  Link  from "next/link";
 import { Card, CardBody, Col } from "reactstrap";
-
+import Image from "next/image";
 //Import images
 import profileImage from "../../../assets/images/profile.jpg";
 
@@ -12,7 +12,7 @@ const LeftSideContent = () => {
         <Card className="profile-sidebar me-lg-4">
           <CardBody className="p-4">
             <div className="text-center pb-4 border-bottom">
-              <img
+              <Image
                 src={profileImage}
                 alt=""
                 className="avatar-lg img-thumbnail rounded-circle mb-4"

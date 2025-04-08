@@ -1,7 +1,7 @@
 import React from "react";
 import  Link  from "next/link";
 import { Card, CardBody, Col, Row } from "reactstrap";
-
+import Image from "next/image";
 //Import Job Images
 import jobImage1 from "../../../assets/images/featured-job/img-01.png";
 import jobImage2 from "../../../assets/images/featured-job/img-02.png";
@@ -158,7 +158,7 @@ const CompanyDetails = () => {
                     </span>
                   </div>
                 )}
-                <img
+                <Image
                   src={companyDetailsNew.jobImg}
                   alt=""
                   className="img-fluid rounded-3"

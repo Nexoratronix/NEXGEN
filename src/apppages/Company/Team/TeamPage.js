@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import  Link  from "next/link";
-
+import Image from "next/image";
 //Import Images
 import teamMemberImage1 from "../../../assets/images/user/img-01.jpg";
 import teamMemberImage2 from "../../../assets/images/user/img-02.jpg";
@@ -79,7 +79,7 @@ const TeamPage = () => {
               <Col lg={4} md={6} key={key}>
                 <div className="team-box card border-0 mt-4">
                   <div className="team-img position-relative mx-auto">
-                    <img
+                    <Image
                       src={teamPageDetails.teamMemberImage}
                       alt=""
                       className="img-thumbnail"

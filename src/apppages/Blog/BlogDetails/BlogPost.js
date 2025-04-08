@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-
+import Image from "next/image";
 //swiper css
 import 'swiper/css';
 import 'swiper/css/virtual';
@@ -58,7 +58,7 @@ const BlogPost = () => {
             {(blogPost || []).map((blogPostDetails, key) => (
               <SwiperSlide key={key}>
                 <Card className="blog-modern-box overflow-hidden border-0">
-                  <img
+                  <Image
                     src={blogPostDetails.blogPostImage}
                     alt=""
                     className="img-fluid"

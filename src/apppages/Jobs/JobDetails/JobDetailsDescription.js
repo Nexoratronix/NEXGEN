@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody, Col, Row } from "reactstrap";
-
+import Image from "next/image";
 //Import Images
 import JobDetailImage from "../../../assets/images/job-detail.jpg";
 import JobImage10 from "../../../assets/images/featured-job/img-10.png";
@@ -11,9 +11,9 @@ const JobDetailsDescription = () => {
     <React.Fragment>
       <Card className="job-detail overflow-hidden">
         <div>
-          <img src={JobDetailImage} alt="" className="img-fluid" />
+          <Image src={JobDetailImage} alt="" className="img-fluid" />
           <div className="job-details-compnay-profile">
-            <img
+            <Image
               src={JobImage10}
               alt=""
               className="img-fluid rounded-3 rounded-3"

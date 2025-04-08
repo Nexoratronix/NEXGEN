@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Card, CardBody } from "reactstrap";
 import  Link  from "next/link";
-
+import Image from "next/image";
 import Masonry from 'react-masonry-css';
 
 //Pagination
@@ -46,7 +46,7 @@ const MasonaryContent = () => {
             <div className="mb-4">
               <Card className="blog-masonry-box shadow overflow-hidden border-0 p-2">
                 <div className="overflow-hidden">
-                  <img src={blogImage1} alt="" className="img-fluid blog-img" />
+                  <Image src={blogImage1} alt="" className="img-fluid blog-img" />
                 </div>
                 <CardBody className="p-4">
                   <p className="text-muted mb-2">
@@ -58,7 +58,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage1}
                         alt=""
                         className="avatar-xs rounded-circle"
@@ -78,7 +78,7 @@ const MasonaryContent = () => {
             <div className="mb-4">
               <Card className="blog-masonry-box shadow overflow-hidden border-0 p-2">
                 <div className="overflow-hidden">
-                  <img src={blogImage6} alt="" className="img-fluid blog-img" />
+                  <Image src={blogImage6} alt="" className="img-fluid blog-img" />
                 </div>
                 <CardBody className="p-4">
                   <p className="text-muted mb-2">
@@ -90,7 +90,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage2}
                         alt=""
                         className="avatar-xs rounded-circle"
@@ -112,7 +112,7 @@ const MasonaryContent = () => {
             <div className="mb-4">
               <Card className="blog-masonry-box shadow overflow-hidden border-0 p-2">
                 <div className="overflow-hidden">
-                  <img src={blogImage2} alt="" className="img-fluid blog-img" />
+                  <Image src={blogImage2} alt="" className="img-fluid blog-img" />
                 </div>
                 <CardBody className="p-4">
                   <p className="text-muted mb-2">
@@ -124,7 +124,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage3}
                         alt=""
                         className="avatar-xs rounded-circle"
@@ -146,7 +146,7 @@ const MasonaryContent = () => {
             <div className="mb-4">
               <Card className="blog-masonry-box shadow overflow-hidden border-0 p-2">
                 <div className="overflow-hidden">
-                  <img src={blogImage7} alt="" className="img-fluid blog-img" />
+                  <Image src={blogImage7} alt="" className="img-fluid blog-img" />
                 </div>
                 <CardBody className="p-4">
                   <p className="text-muted mb-2">
@@ -160,7 +160,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage4}
                         alt=""
                         className="avatar-xs rounded-circle"
@@ -182,7 +182,7 @@ const MasonaryContent = () => {
             <div className="mb-4">
               <Card className="blog-masonry-box shadow overflow-hidden border-0 p-2">
                 <div className="overflow-hidden">
-                  <img src={blogImage8} alt="" className="img-fluid blog-img" />
+                  <Image src={blogImage8} alt="" className="img-fluid blog-img" />
                 </div>
                 <CardBody className="p-4">
                   <p className="text-muted mb-2">
@@ -194,7 +194,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage5}
                         alt=""
                         className="avatar-xs rounded-circle"
@@ -231,7 +231,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage6}
                         alt=""
                         className="avatar-xs rounded-circle"
@@ -251,7 +251,7 @@ const MasonaryContent = () => {
             <div className="mb-4">
               <Card className="blog-masonry-box shadow overflow-hidden border-0 p-2">
                 <div className="overflow-hidden">
-                  <img src={blogImage3} alt="" className="img-fluid blog-img" />
+                  <Image src={blogImage3} alt="" className="img-fluid blog-img" />
                 </div>
                 <CardBody className="p-4">
                   <p className="text-muted mb-2">
@@ -263,7 +263,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage7}
                         alt=""
                         className="avatar-xs rounded-circle"
@@ -283,7 +283,7 @@ const MasonaryContent = () => {
             <div className="mb-4">
               <Card className="blog-masonry-box shadow overflow-hidden border-0 p-2">
                 <div className="overflow-hidden">
-                  <img src={blogImage9} alt="" className="img-fluid blog-img" />
+                  <Image src={blogImage9} alt="" className="img-fluid blog-img" />
                 </div>
                 <CardBody className="p-4">
                   <p className="text-muted mb-2">
@@ -295,7 +295,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage8}
                         alt=""
                         className="avatar-xs rounded-circle"
@@ -315,7 +315,7 @@ const MasonaryContent = () => {
             <div className="mb-4">
               <Card className="blog-masonry-box shadow overflow-hidden border-0 p-2">
                 <div className="overflow-hidden">
-                  <img
+                  <Image
                     src={blogImage10}
                     alt=""
                     className="img-fluid blog-img"
@@ -331,7 +331,7 @@ const MasonaryContent = () => {
                   </Link>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage9}
                         alt=""
                         className="avatar-xs rounded-circle"

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import  Link  from "next/link";
 import { Card, CardBody, Col, Modal, ModalBody, Row } from "reactstrap";
-
+import Image from "next/image";
 import Pagination from "../../Jobs/JobList2/Pagination";
 
 //Import Images
@@ -136,7 +136,7 @@ const BookmarkJobListing = () => {
                 <Row>
                   <Col lg={1}>
                     <Link href="/companydetails">
-                      <img
+                      <Image
                         src={jobListingDetails.companyImg}
                         alt=""
                         className="img-fluid rounded-3"

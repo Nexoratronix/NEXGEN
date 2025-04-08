@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Container, Row,Col ,Card} from 'reactstrap'
-
+import Image from "next/image";
 //Import images
 import blogImage4 from '../../../assets/images/blog/img-04.jpg';
 import blogImage5 from '../../../assets/images/blog/img-05.jpg';
@@ -46,7 +46,7 @@ const BlogModernContent = () => {
                             <Row >
                                 <Col lg={8} className="mt-4">
                                     <Card className="card blog-modern-box overflow-hidden">
-                                        <img src={blogImage4} alt="" className="img-fluid" />
+                                        <Image src={blogImage4} alt="" className="img-fluid" />
                                         <div className="bg-overlay"></div>
                                         <div className="card-img-overlay">
                                             <Link href="/blogdetails" className="text-white"><h5 className="card-title">How href get creative in your work ?</h5></Link>
@@ -56,7 +56,7 @@ const BlogModernContent = () => {
                                 </Col>
                                 <Col lg={4} className="mt-4">
                                     <Card className="blog-modern-box overflow-hidden border-0">
-                                        <img src={blogImage6} alt="" className="img-fluid" />
+                                        <Image src={blogImage6} alt="" className="img-fluid" />
                                         <div className="bg-overlay"></div>
                                         <div className="card-img-overlay">
                                             <Link href="/blogdetails" className="text-white"><h5 className="card-title">Smartest Applications for Business</h5></Link>
@@ -66,7 +66,7 @@ const BlogModernContent = () => {
                                 </Col>
                                 <Col lg={5} className="mt-4">
                                     <Card className="blog-modern-box overflow-hidden border-0">
-                                        <img src={blogImage5} alt="" className="img-fluid"/>
+                                        <Image src={blogImage5} alt="" className="img-fluid"/>
                                         <div className="bg-overlay"></div>
                                         <div className="card-img-overlay">
                                             <Link href="/blogdetails" className="text-white"><h5 className="card-title">How apps is changing the IT world</h5></Link>
@@ -76,7 +76,7 @@ const BlogModernContent = () => {
                                 </Col>
                                 <Col lg={7} className="mt-4">
                                     <Card className="card blog-modern-box overflow-hidden border-0">
-                                        <img src={blogImage7} alt="" className="img-fluid" />
+                                        <Image src={blogImage7} alt="" className="img-fluid" />
                                         <div className="bg-overlay"></div>
                                         <div className="card-img-overlay">
                                             <Link href="/blogdetails" className="text-white"><h5 className="card-title">Design your apps in your own way</h5></Link>
@@ -87,7 +87,7 @@ const BlogModernContent = () => {
                                 {(blogModern).map((blogModernDetails,key)=>(
                                 <Col lg={4} className="mt-4" key={key}>
                                     <Card className="card blog-modern-box overflow-hidden border-0">
-                                        <img src={blogModernDetails.blogImage} alt="" className="img-fluid" />
+                                        <Image src={blogModernDetails.blogImage} alt="" className="img-fluid" />
                                         <div className="bg-overlay"></div>
                                         <div className="card-img-overlay">
                                             <Link href="/blogdetails" className="text-white"><h5 className="card-title">{blogModernDetails.blogTitle}</h5></Link>
@@ -98,7 +98,7 @@ const BlogModernContent = () => {
                                 ))}
                                 <Col lg={12} className="mt-4">
                                     <Card className="blog-modern-box overflow-hidden border-0">
-                                        <img src={blogImage11} alt="" className="img-fluid" />
+                                        <Image src={blogImage11} alt="" className="img-fluid" />
                                         <div className="bg-overlay"></div>
                                         <div className="card-img-overlay">
                                             <Link href="/blogdetails" className="text-white"><h5 className="card-title">Stack designer Olivia Murphy offers freelancing advice</h5></Link>
@@ -108,7 +108,7 @@ const BlogModernContent = () => {
                                 </Col>
                                 <Col lg={6} className="mt-4">
                                     <Card className="blog-modern-box overflow-hidden border-0">
-                                        <img src={blogImage12} alt="" className="" />
+                                        <Image src={blogImage12} alt="" className="" />
                                         <div className="bg-overlay"></div>
                                         <div className="card-img-overlay">
                                             <Link href="/blogdetails" className="text-white"><h5 className="card-title">Manage white space in responsive layouts ?</h5></Link>
@@ -118,7 +118,7 @@ const BlogModernContent = () => {
                                 </Col>
                                 <Col lg={6} className="mt-4">
                                     <Card className="blog-modern-box overflow-hidden border-0">
-                                        <img src={blogImage13} alt="" className="" />
+                                        <Image src={blogImage13} alt="" className="" />
                                         <div className="bg-overlay"></div>
                                         <div className="card-img-overlay">
                                             <Link href="/blogdetails" className="text-white"><h5 className="card-title">Do traditional landing pages work for Saas startups?</h5></Link>

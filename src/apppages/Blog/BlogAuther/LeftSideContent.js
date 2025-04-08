@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col, Card, CardBody, Row, Input } from "reactstrap";
 import  Link  from "next/link";
-
+import Image from "next/image";
 //Lightbox
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -57,7 +57,7 @@ const LeftSideContent = () => {
             <div className="mb-5">
               <h5 className="blog-title mb-4">About Me</h5>
               <div className="text-center">
-                <img
+                <Image
                   src={UserImage3}
                   alt=""
                   className="avatar-lg img-thumbnail mb-4 rounded-circle"
@@ -106,7 +106,7 @@ const LeftSideContent = () => {
               <Row className="g-3">
                 <Col sm={4}>
                   <Link href="/" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages1}
                       onClick={() => {
                         setisGallery(true);
@@ -119,7 +119,7 @@ const LeftSideContent = () => {
                 </Col>
                 <Col sm={4}>
                   <Link href="/" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages2}
                       onClick={() => {
                         setisGallery(true);
@@ -132,7 +132,7 @@ const LeftSideContent = () => {
                 </Col>
                 <Col sm={4}>
                   <Link href="#" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages3}
                       onClick={() => {
                         setisGallery(true);
@@ -145,7 +145,7 @@ const LeftSideContent = () => {
                 </Col>
                 <Col sm={4}>
                   <Link href="#" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages4}
                       onClick={() => {
                         setisGallery(true);
@@ -158,7 +158,7 @@ const LeftSideContent = () => {
                 </Col>
                 <Col sm={4}>
                   <Link href="#" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages5}
                       onClick={() => {
                         setisGallery(true);
@@ -171,7 +171,7 @@ const LeftSideContent = () => {
                 </Col>
                 <Col sm={4}>
                   <Link href="#" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages6}
                       onClick={() => {
                         setisGallery(true);
@@ -184,7 +184,7 @@ const LeftSideContent = () => {
                 </Col>
                 <Col sm={4}>
                   <Link href="#" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages7}
                       onClick={() => {
                         setisGallery(true);
@@ -197,7 +197,7 @@ const LeftSideContent = () => {
                 </Col>
                 <Col sm={4}>
                   <Link href="#" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages8}
                       onClick={() => {
                         setisGallery(true);
@@ -210,7 +210,7 @@ const LeftSideContent = () => {
                 </Col>
                 <Col sm={4}>
                   <Link href="#" className="image-popup">
-                    <img
+                    <Image
                       src={blogImages10}
                       onClick={() => {
                         setisGallery(true);

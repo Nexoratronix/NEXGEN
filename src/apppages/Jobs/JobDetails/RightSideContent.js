@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, ModalBody, Input, Label, Card, CardBody } from "reactstrap";
 import  Link  from "next/link";
-
+import Image from "next/image";
 //Import Images
 import jobImages2 from "../../../assets/images/featured-job/img-02.png";
 
@@ -102,7 +102,7 @@ const RightSideContent = () => {
         <Card className="company-profile mt-4">
           <CardBody className="p-4">
             <div className="text-center">
-              <img src={jobImages2} alt="" className="img-fluid rounded-3" />
+              <Image src={jobImages2} alt="" className="img-fluid rounded-3" />
 
               <div className="mt-4">
                 <h6 className="fs-17 mb-1">NEXGEN Staffing Technology Pvt.Ltd</h6>

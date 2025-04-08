@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-
+import Image from "next/image";
 //swiper css
 import 'swiper/css';
 import 'swiper/css/virtual';
@@ -42,7 +42,7 @@ const BlogSwiper = () => {
         <div className="swiper-wrapper">
           {(blogSwiper || []).map((blogSwiperDetails, key) => (
             <SwiperSlide key={key}>
-              <img
+              <Image
                 src={blogSwiperDetails.blogImage}
                 alt=""
                 className="img-fluid rounded-3"

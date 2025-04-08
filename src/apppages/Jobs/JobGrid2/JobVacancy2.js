@@ -144,7 +144,7 @@
 //                   </div>
 //                   <div>
 //                     <Link href="/companydetails">
-//                       <img
+//                       <Image
 //                         src={jobVacancy2Details.icon}
 //                         alt="Job Icon"
 //                         className="img-fluid rounded-3"
@@ -314,7 +314,7 @@ import { Col, Modal, ModalBody, Input, Label } from "reactstrap";
 import Link from "next/link";
 import useLoadingStore from "@/store/loading";
 import { Spinner } from "reactstrap";
-
+import Image from "next/image";
 const jobIcons = [
   "/job-icons/developer1.png",
   "/job-icons/developer2.png",
@@ -449,7 +449,7 @@ const JobVacancy2 = () => {
                   </div>
                   <div>
                     <Link href="/companydetails">
-                      <img
+                      <Image
                         src={jobVacancy2Details.icon}
                         alt="Job Icon"
                         className="img-fluid rounded-3"

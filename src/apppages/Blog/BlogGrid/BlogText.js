@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Card, CardBody } from "reactstrap";
 import  Link  from "next/link";
-
+import Image from "next/image";
 import blogImage4 from "../../../assets/images/blog/img-04.jpg";
 import blogImage5 from "../../../assets/images/blog/img-05.jpg";
 import blogImage6 from "../../../assets/images/blog/img-06.jpg";
@@ -101,7 +101,7 @@ const BlogText = () => {
         {blogText.map((blogTextDetails, key) => (
           <Col lg={6} className="mb-4" key={key}>
             <Card className="blog-grid-box p-2">
-              <img
+              <Image
                 src={blogTextDetails.blogImage}
                 alt=""
                 className="img-fluid"

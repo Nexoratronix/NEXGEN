@@ -1,7 +1,7 @@
 import React from "react";
 import  Link  from "next/link";
 import { Card, CardBody, Col } from "reactstrap";
-
+import Image from "next/image";
 //Import userImage
 import userImage1 from "../../../assets/images/user/img-01.jpg";
 
@@ -12,7 +12,7 @@ const LeftSideContent = () => {
         <Card className="side-bar">
           <CardBody className="p-4">
             <div className="candidate-profile text-center">
-              <img
+              <Image
                 src={userImage1}
                 alt=""
                 className="avatar-lg rounded-circle"

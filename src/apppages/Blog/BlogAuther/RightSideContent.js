@@ -1,6 +1,6 @@
 import React from "react";
 import { Col } from "reactstrap";
-
+import Image from "next/image";
 import blogimage12 from "../../../assets/images/blog/img-12.jpg";
 import blogimage11 from "../../../assets/images/blog/img-11.jpg";
 import blogimage13 from "../../../assets/images/blog/img-13.jpg";
@@ -65,7 +65,7 @@ const RightSideContent = () => {
               </div>
               <div className="mb-3">
                 <Link href="/blogdetails">
-                  <img
+                  <Image
                     src={blogContentDetails.blogImage}
                     alt=""
                     className="img-fluid rounded-3"

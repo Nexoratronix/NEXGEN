@@ -3,7 +3,7 @@ import { Col, Container, Row } from "reactstrap";
 
 //Import Image
 import subscribeImg from "../../assets/images/subscribe.png";
-
+import Image from "next/image";
 const Subscribe = () => {
   return (
     <React.Fragment>
@@ -42,7 +42,7 @@ const Subscribe = () => {
           </Row>
         </Container>
         <div className="email-img d-none d-lg-block">
-          <img src={subscribeImg} alt="" className="img-fluid" />
+          <Image src={subscribeImg} alt="" className="img-fluid" />
         </div>
       </section> */}
     </React.Fragment>

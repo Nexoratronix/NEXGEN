@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col, Row, Modal, ModalBody, Input, Label, CardBody } from "reactstrap";
 import  Link  from "next/link";
-
+import Image from "next/image";
 import userImage1 from "../../../assets/images/user/img-01.jpg";
 import userImage2 from "../../../assets/images/user/img-02.jpg";
 import userImage3 from "../../../assets/images/user/img-03.jpg";
@@ -200,7 +200,7 @@ const CandidateGridDetails = () => {
 
                   <div className="d-flex mb-4">
                     <div className="flex-shrink-0 position-relative">
-                      <img
+                      <Image
                         src={candidategridDetailsNew.userImg}
                         alt=""
                         className="avatar-md rounded"

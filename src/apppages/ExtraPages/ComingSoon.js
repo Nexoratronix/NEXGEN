@@ -2,7 +2,7 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import { Col, Container, Input, Row } from "reactstrap";
 import Countdown from "react-countdown";
-
+import Image from "next/image";
 //import Image
 import rocketImage from "../../assets/images/animat-rocket-color.gif";
 
@@ -46,7 +46,7 @@ const ComingSoon = () => {
                   <Col lg={6}>
                     <div className="text-center">
                       <div className="mb-4 pb-3">
-                        <img
+                        <Image
                           src={rocketImage}
                           alt=""
                           height="150"

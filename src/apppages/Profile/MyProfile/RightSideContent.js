@@ -13,7 +13,7 @@ import {
   CardBody,
   Label
 } from "reactstrap";
-
+import Image from "next/image";
 import classnames from "classnames";
 
 //Images Import
@@ -227,7 +227,7 @@ const RightSideContent = () => {
                     <h5 className="fs-17 fw-semibold mb-3 mb-0">My Account</h5>
                     <div className="text-center">
                       <div className="mb-4 profile-user">
-                        <img
+                        <Image
                           src={userImage2}
                           className="rounded-circle img-thumbnail profile-img"
                           id="profile-img"

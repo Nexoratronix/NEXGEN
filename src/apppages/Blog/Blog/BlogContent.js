@@ -1,7 +1,7 @@
 import React from "react";
 import  Link  from "next/link";
 import { Container, Col, Row } from "reactstrap";
-
+import Image from "next/image";
 //User Images
 import userImage1 from "../../../assets/images/user/img-01.jpg";
 import userImage2 from "../../../assets/images/user/img-02.jpg";
@@ -119,7 +119,7 @@ const BlogContent = () => {
             <Col lg={7}>
               <div className="post-preview overflow-hidden rounded-3 mb-3 mb-lg-0">
                 <Link href="/blogdetails">
-                  <img
+                  <Image
                     src={blogImage4}
                     alt="Blog"
                     className="img-fluid blog-img"
@@ -148,7 +148,7 @@ const BlogContent = () => {
                   </p>
                   <div className="d-flex align-items-center mt-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={userImage1}
                         alt=""
                         className="avatar-sm rounded-circle"
@@ -178,7 +178,7 @@ const BlogContent = () => {
                   <article className="post position-relative mt-4" key={key}>
                     <div className="post-preview overflow-hidden mb-3 rounded-3">
                       <Link href="blog-details">
-                        <img
+                        <Image
                           src={blogContentInner.blogImage}
                           alt=""
                           className="img-fluid blog-img"
@@ -197,7 +197,7 @@ const BlogContent = () => {
                     <p className="text-muted">{blogContentInner.blogText}</p>
                     <div className="d-flex align-items-center mt-4">
                       <div className="flex-shrink-0">
-                        <img
+                        <Image
                           src={blogContentInner.blogAutherImage}
                           alt=""
                           className="avatar-sm rounded-circle"

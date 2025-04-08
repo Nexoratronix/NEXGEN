@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import  Link  from "next/link";
 import { Col, Input, Label, Row, Modal, ModalBody } from "reactstrap";
-
+import Image from "next/image";
 //Images Import
 import jobImage1 from "../../../assets/images/featured-job/img-01.png";
 import jobImage2 from "../../../assets/images/featured-job/img-02.png";
@@ -174,7 +174,7 @@ const JobVacancyList = () => {
                 <Col md={2}>
                   <div className="text-center mb-4 mb-md-0">
                     <Link href="/companydetails">
-                      <img
+                      <Image
                         src={jobVacancyListDetails.companyImg}
                         alt=""
                         className="img-fluid rounded-3"

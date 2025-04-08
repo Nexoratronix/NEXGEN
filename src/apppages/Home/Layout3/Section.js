@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Container, Row, Form } from "reactstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-
+import Image from "next/image";
 import homeImage2 from "../../../assets/images/home/img-02.png";
 import homeImage3 from "../../../assets/images/home/img-03.png";
 import homeImage4 from "../../../assets/images/home/img-04.png";
@@ -75,7 +75,7 @@ const Section = () => {
                   <div className="swiper-wrapper">
                     <SwiperSlide>
                       <div className="home-slide-box text-center">
-                        <img
+                        <Image
                           src={homeImage2}
                           alt=""
                           className="img-fluid rounded-3"
@@ -92,7 +92,7 @@ const Section = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="home-slide-box text-center">
-                        <img
+                        <Image
                           src={homeImage3}
                           alt=""
                           className="img-fluid rounded-3"
@@ -109,7 +109,7 @@ const Section = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="home-slide-box text-center">
-                        <img
+                        <Image
                           src={homeImage4}
                           alt=""
                           className="img-fluid rounded-3"

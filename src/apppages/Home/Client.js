@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "reactstrap";
 import Link from "next/link";
-
+import Image from "next/image";
 //Logo Images
 import LogoImage1 from "../../assets/images/logo/logo-01.png";
 import LogoImage2 from "../../assets/images/logo/logo-02.png";
@@ -53,7 +53,7 @@ const Client = () => {
                     title=""
                     data-bs-original-title="Woocommerce"
                   >
-                    <img src={item.logoImage} alt="" className="img-fluid" />
+                    <Image src={item.logoImage} alt="" className="img-fluid" />
                   </Link>
                 </div>
               </Col>

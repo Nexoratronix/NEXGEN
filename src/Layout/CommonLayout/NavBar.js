@@ -13,7 +13,7 @@ import {
   Spinner,
   Button,
 } from "reactstrap";
-
+import Image from "next/image";
 import Link from "next/link";
 import io from "socket.io-client";
 import { useRouter } from "next/router";
@@ -534,7 +534,7 @@ const NavBar = (props) => {
           {/* Replace React Router Link with Next.js Link */}
           <Link href="/" className="navbar-brand text-dark fw-bold me-auto">
             <Image src={darkLogo} height="80" alt="" className="logo-dark" style={{ height: "6rem", width: "6rem" }} />
-            {/* <img src={lightLogo} height="22" alt="" className="logo-light" /> */}
+            {/* <Image src={lightLogo} height="22" alt="" className="logo-light" /> */}
           </Link>
           <div>
           {auth && (

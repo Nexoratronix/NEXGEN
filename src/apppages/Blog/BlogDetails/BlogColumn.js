@@ -1,6 +1,6 @@
 import React from "react";
 import  Link  from "next/link";
-
+import Image from "next/image";
 //import UserImage
 import userImage3 from "../../../assets/images/user/img-03.jpg";
 
@@ -11,7 +11,7 @@ const BlogColumn = () => {
         <li className="list-inline-item">
           <div className="d-flex align-items-center">
             <div className="flex-shrink-0">
-              <img
+              <Image
                 src={userImage3}
                 alt=""
                 className="avatar-sm rounded-circle"

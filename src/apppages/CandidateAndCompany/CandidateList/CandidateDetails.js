@@ -1,7 +1,7 @@
 import React from "react";
 import  Link  from "next/link";
 import { CardBody, Col, Row } from "reactstrap";
-
+import Image from "next/image";
 //Import images
 import userImage1 from "../../../assets/images/user/img-01.jpg";
 import userImage2 from "../../../assets/images/user/img-02.jpg";
@@ -266,7 +266,7 @@ const CandidateDetails = () => {
                 <div className="col-auto">
                   <div className="candidate-list-images">
                     <Link href="#">
-                      <img
+                      <Image
                         src={candidateDetailsNew.userImg}
                         alt=""
                         className="avatar-md img-thumbnail rounded-circle"

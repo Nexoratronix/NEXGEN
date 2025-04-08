@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Image from "next/image";
 import {
   Container,
   Row,
@@ -86,7 +86,7 @@ const CompanyTestimonal = () => {
                       }}
                     >
                       <div className="position-relative">
-                        <img src={testImg01} alt="" className="rounded" />
+                        <Image src={testImg01} alt="" className="rounded" />
                         <div className="about-testi-bg-overlay">
                           <i className="mdi mdi-plus-circle-outline text-white fs-3"></i>
                         </div>
@@ -99,7 +99,7 @@ const CompanyTestimonal = () => {
                       }}
                     >
                       <div className="position-relative">
-                        <img src={testImg02} alt="" className="rounded" />
+                        <Image src={testImg02} alt="" className="rounded" />
                         <div className="about-testi-bg-overlay">
                           <i className="mdi mdi-plus-circle-outline text-white fs-3"></i>
                         </div>
@@ -112,7 +112,7 @@ const CompanyTestimonal = () => {
                       }}
                     >
                       <div className="position-relative">
-                        <img src={testImg03} alt="" className="rounded" />
+                        <Image src={testImg03} alt="" className="rounded" />
                         <div className="about-testi-bg-overlay">
                           <i className="mdi mdi-plus-circle-outline text-white fs-3"></i>
                         </div>
@@ -125,7 +125,7 @@ const CompanyTestimonal = () => {
                       }}
                     >
                       <div className="position-relative">
-                        <img src={testImg04} alt="" className="rounded" />
+                        <Image src={testImg04} alt="" className="rounded" />
                         <div className="about-testi-bg-overlay">
                           <i className="mdi mdi-plus-circle-outline text-white fs-3"></i>
                         </div>

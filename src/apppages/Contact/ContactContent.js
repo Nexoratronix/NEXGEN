@@ -4,7 +4,7 @@ import { Col, Container, Row, Input, Label } from "reactstrap";
 
 //Import Images
 import contactImage from "../../assets/images/contact.png";
-
+import Image from "next/image";
 const ContactContent = () => {
   return (
     <React.Fragment>
@@ -97,7 +97,7 @@ const ContactContent = () => {
             </Col>
             <Col lg={5} className="ms-auto order-first order-lg-last">
               <div className="text-center">
-                <img src={contactImage} alt="" className="img-fluid" />
+                <Image src={contactImage} alt="" className="img-fluid" />
               </div>
               <div className="mt-4 pt-3">
                 <div className="d-flex text-muted align-items-center mt-2">

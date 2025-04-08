@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
-
+import Image from "next/image";
 // import images
 import userImage2 from "../../../assets/images/user/img-02.jpg";
 
@@ -17,10 +17,10 @@ const Images = () => {
             Use classes <code>.avatar-*</code>.
           </p>
           <div>
-            <img src={userImage2} alt="" className="avatar-xs" />
-            <img src={userImage2} alt="" className="avatar-sm" />
-            <img src={userImage2} alt="" className="avatar-md" />
-            <img src={userImage2} alt="" className="avatar-lg" />
+            <Image src={userImage2} alt="" className="avatar-xs" />
+            <Image src={userImage2} alt="" className="avatar-sm" />
+            <Image src={userImage2} alt="" className="avatar-md" />
+            <Image src={userImage2} alt="" className="avatar-lg" />
           </div>
         </CardBody>
       </Card>

@@ -1,7 +1,7 @@
 import React from "react";
 import  Link  from "next/link";
 import { Col, Container, Row } from "reactstrap";
-
+import Image from "next/image";
 //import Images
 import Error404Image from "../../assets/images/404.png";
 
@@ -17,7 +17,7 @@ const Error404 = () => {
                 <Row className="justify-content-center">
                   <Col lg={6}>
                     <div className="text-center">
-                      <img src={Error404Image} alt="" className="img-fluid" />
+                      <Image src={Error404Image} alt="" className="img-fluid" />
                       <div className="mt-5">
                         <h4 className="text-uppercase mt-3">
                           Sorry, page not found
