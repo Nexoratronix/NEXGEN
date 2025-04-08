@@ -26,12 +26,12 @@ import { formatDistanceToNow } from "date-fns";
 import { toast } from "react-toastify"; // For better error/success messages
 import "react-toastify/dist/ReactToastify.css"; // Import toast styles
 import { AuthContext } from "@/pages/_app";
-import { useLoadingStore } from '@/store/loading';
+// import { useLoadingStore } from '@/store/loading'; // Temporarily commented out until export is fixed
 let socket;
 
 const NavBar = (props) => {
   const { auth } = useContext(AuthContext) || { auth: null };
-  const { setIsLoading } = useLoadingStore();
+  // const { setIsLoading } = useLoadingStore(); // Temporarily commented out
   const [message, setMessage] = useState("");
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
@@ -61,7 +61,7 @@ const NavBar = (props) => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    setIsLoading(true);
+    // setIsLoading(true); // Temporarily commented out
     const accessToken = document.cookie
       .split('; ')
       .find(row => row.startsWith('accessToken='))
@@ -75,15 +75,15 @@ const NavBar = (props) => {
         setAuth(null);
       }
     }
-    setIsLoading(false);
-  }, [auth, setAuth, setIsLoading]);
+    // setIsLoading(false); // Temporarily commented out
+  }, [auth]);
 
   if (!auth) {
     return (
       <nav className="navbar navbar-expand-lg fixed-top sticky p-0">
         <Container fluid className="custom-container">
           <Link href="/" className="navbar-brand text-dark fw-bold me-auto">
-            <Image src={darkLogo} height={80} alt="" className="logo-dark" style={{ height: "6rem", width: "6rem" }} />
+            <Image src={darkLogo} height="80" alt="" className="logo-dark" style={{ height: "6rem", width: "6rem" }} />
           </Link>
         </Container>
       </nav>
@@ -91,13 +91,14 @@ const NavBar = (props) => {
   }
 
   useEffect(() => {
-    
-    window.addEventListener("scroll", scrollNavigation, true);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", scrollNavigation, true);
 
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", scrollNavigation, true);
-    };
+      // Cleanup the event listener on component unmount
+      return () => {
+        window.removeEventListener("scroll", scrollNavigation, true);
+      };
+    }
   }, []);
 
   function scrollNavigation() {
@@ -127,7 +128,7 @@ const NavBar = (props) => {
   // Menu activation
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    if (typeof window === "undefined") return; // Skip on server
+    
     // Use router.pathname instead of props.router.location.pathname
     const pathName = router.pathname;
     var matchingMenuItem = null;
@@ -231,7 +232,6 @@ const NavBar = (props) => {
 
   // Notification logic
   const checkAuth = async () => {
-    if (typeof window === "undefined") return; // Skip on server
     try {
       const response = await fetch("/api/auth/me", {
         method: "GET",
@@ -370,8 +370,6 @@ const NavBar = (props) => {
   //   checkAuth();
   // }, []);
 
-
-
   // Fetch user data on component mount and when route changes
   useEffect(() => {
     const fetchUserData = async () => {
@@ -404,42 +402,43 @@ const NavBar = (props) => {
 
   // Initialize WebSocket (Updated)
   useEffect(() => {
-    if (typeof window === "undefined") return; // Skip on server
-    checkAuth();
+    if (typeof window !== "undefined") {
+      checkAuth();
 
-    if (isAuthenticated && userId && !socketInitialized.current) {
-      socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, {
-        withCredentials: true,
-      });
+      if (isAuthenticated && userId && !socketInitialized.current) {
+        socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, {
+          withCredentials: true,
+        });
 
-      socket.on("connect", () => {
-        console.log("Connected to WebSocket server:", socket.id);
-        socket.emit("join", userId);
-      });
+        socket.on("connect", () => {
+          console.log("Connected to WebSocket server:", socket.id);
+          socket.emit("join", userId);
+        });
 
-      socket.on("newNotification", (message) => {
-        console.log("New notification received:", message);
-        setNotifications((prev) => [message, ...prev]);
-        toast.info("New notification received!");
-      });
+        socket.on("newNotification", (message) => {
+          console.log("New notification received:", message);
+          setNotifications((prev) => [message, ...prev]);
+          toast.info("New notification received!");
+        });
 
-      socket.on("connect_error", (error) => {
-        console.error("WebSocket connection error:", error);
-        toast.error("Failed to connect to notification server.");
-      });
+        socket.on("connect_error", (error) => {
+          console.error("WebSocket connection error:", error);
+          toast.error("Failed to connect to notification server.");
+        });
 
-      socket.on("disconnect", () => {
-        console.log("Disconnected from WebSocket server");
-      });
+        socket.on("disconnect", () => {
+          console.log("Disconnected from WebSocket server");
+        });
 
-      socketInitialized.current = true;
+        socketInitialized.current = true;
 
-      return () => {
-        socket.disconnect();
-        socketInitialized.current = false;
-      };
+        return () => {
+          socket.disconnect();
+          socketInitialized.current = false;
+        };
+      }
     }
-  }, [isAuthenticated, userId]);
+  }, [isAuthenticated, userId, checkAuth]);
 
   // Removed: fetchNotifications function and its useEffect hook
   // Removed: loading and error states

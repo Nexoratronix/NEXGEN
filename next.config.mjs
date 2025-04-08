@@ -19,12 +19,7 @@ const nextConfig = {
     }
     return config;
   },
-  eslint: {
-    ignoreDuringBuilds: true, // Optional: Ignores all ESLint errors during build
-    rules: {
-      'react/no-unescaped-entities': 0, // Specifically disable this rule
-    },
-  },
+ 
 };
 
 export default nextConfig;
