@@ -50,7 +50,6 @@ const CommonLayout = ({ children }) => {
       <TopBar />
       <NavBar />
       {children}
-   
       {typeof window !== "undefined" ? <Footer /> : <FallbackFooter />}
     </div>
   );
