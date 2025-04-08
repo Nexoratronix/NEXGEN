@@ -13,7 +13,7 @@ import {
   Spinner,
   Button,
 } from "reactstrap";
-import Image from "next/image";
+
 import Link from "next/link";
 import io from "socket.io-client";
 import { useRouter } from "next/router";

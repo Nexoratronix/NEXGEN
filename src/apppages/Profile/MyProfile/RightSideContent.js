@@ -224,7 +224,7 @@ const RightSideContent = () => {
               <TabPane tabId="2">
                 <Form action="#">
                   <div>
-                    <h5 className="fs-17 fw-semibold mb-3 mb-0">My Account</h5>
+                    <h5 className="fs-17 fw-semibold  mb-0">My Account</h5>
                     <div className="text-center">
                       <div className="mb-4 profile-user">
                         <Image
@@ -446,7 +446,7 @@ const RightSideContent = () => {
                   </div>
 
                   <div className="mt-4">
-                    <h5 className="fs-17 fw-semibold mb-3 mb-3">
+                    <h5 className="fs-17 fw-semibold  mb-3">
                       Change Password
                     </h5>
                     <Row>
