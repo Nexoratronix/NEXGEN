@@ -1032,7 +1032,7 @@
 // };
 
 // export default withRouter(NavBar);
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef, useContext } from "react";
 import {
   Col,
   Row,
@@ -1047,204 +1047,179 @@ import {
   Spinner,
   Button,
 } from "reactstrap";
-
 import Link from "next/link";
 import io from "socket.io-client";
 import { useRouter } from "next/router";
 import classname from "classnames";
 import Image from "next/image";
-import withRouter from "../../components/withRouter"; // This is the updated withRouter HOC for Next.js
+import withRouter from "../../components/withRouter";
 import darkLogo from "../../assets/images/logo/logo.png";
-
 import { formatDistanceToNow } from "date-fns";
-import { toast } from "react-toastify"; // For better error/success messages
-import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "@/pages/_app";
-// import { useLoadingStore } from '@/store/loading'; // Temporarily commented out until export is fixed
+import jwt from "jsonwebtoken";
+
 let socket;
 
 const NavBar = (props) => {
-  const { auth } = useContext(AuthContext) || { auth: null };
-  // const { setIsLoading } = useLoadingStore(); // Temporarily commented out
+  const { auth, setAuth } = useContext(AuthContext) || { auth: null, setAuth: () => {} };
   const [message, setMessage] = useState("");
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [userData, setUserData] = useState(null);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-
   const [home, setHome] = useState(false);
   const [company, setCompany] = useState(false);
   const [pages, setPages] = useState(false);
   const [blog, setBlog] = useState(false);
   const [userId, setUserId] = useState(null);
-  const dropDownNotification = () => setNotificationOpen((prevState) => !prevState);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [hasBeenAuthenticated, setHasBeenAuthenticated] = useState(false);
-
   const [userProfile, setUserProfile] = useState(false);
-  const dropDownuserprofile = () => setUserProfile((prevState) => !prevState);
+  const [navClass, setNavClass] = useState(false);
   const socketInitialized = useRef(false);
-  // Scroll navbar
-  const [navClass, setnavClass] = useState(false);
 
- useEffect(() => {
-  if (typeof window === "undefined") {
-    return; // Prevent SSR execution
-  }
+  // Toggle functions
+  const toggle = () => setIsOpen(!isOpen);
+  const dropDownNotification = () => setNotificationOpen((prevState) => !prevState);
+  const dropDownUserProfile = () => setUserProfile((prevState) => !prevState);
 
-  const accessToken = document.cookie
-    .split('; ')
-    .find(row => row.startsWith('accessToken='))
-    ?.split('=')[1];
+  // All useEffect hooks
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-  if (accessToken && !auth) {
-    try {
-      const decoded = jwt.verify(accessToken, process.env.NEXTAUTH_SECRET);
-      setAuth(decoded);
-    } catch (error) {
-      setAuth(null);
+    const accessToken = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("accessToken="))
+      ?.split("=")[1];
+
+    if (accessToken && !auth) {
+      try {
+        const decoded = jwt.verify(accessToken, process.env.NEXTAUTH_SECRET);
+        setAuth(decoded);
+      } catch (error) {
+        setAuth(null);
+      }
     }
-  }
-}, [auth]);
-
-  if (!auth) {
-    return (
-      <nav className="navbar navbar-expand-lg fixed-top sticky p-0">
-        <Container fluid className="custom-container">
-          <Link href="/" className="navbar-brand text-dark fw-bold me-auto">
-            <Image src={darkLogo} height="80" alt="" className="logo-dark" style={{ height: "6rem", width: "6rem" }} />
-          </Link>
-        </Container>
-      </nav>
-    );
-  }
+  }, [auth, setAuth]);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return; // Early return for server-side rendering
-    }
-    window.addEventListener("scroll", scrollNavigation, true);
+    if (typeof window === "undefined") return;
 
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", scrollNavigation, true);
+    const handleScroll = () => {
+      const scrollup = window.pageYOffset;
+      setNavClass(scrollup > 0 ? "nav-sticky" : "");
     };
+
+    window.addEventListener("scroll", handleScroll, true);
+    return () => window.removeEventListener("scroll", handleScroll, true);
   }, []);
 
-  function scrollNavigation() {
-    var scrollup = window.pageYOffset;
-    if (scrollup > 0) {
-      setnavClass("nav-sticky");
-    } else {
-      setnavClass("");
-    }
-  }
-
-  const removeActivation = (items) => {
-    for (var i = 0; i < items.length; ++i) {
-      var item = items[i];
-      const parent = items[i].parentElement;
-      if (item && item.classList.contains("active")) {
-        item.classList.remove("active");
-      }
-      if (parent) {
-        if (parent.classList.contains("active")) {
-          parent.classList.remove("active");
-        }
-      }
-    }
-  };
-
-  // Menu activation
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    
-    // Use router.pathname instead of props.router.location.pathname
-    const pathName = router.pathname;
-    var matchingMenuItem = null;
-    var ul = document.getElementById("navbarCollapse");
-    var items = ul.getElementsByTagName("a");
+    if (typeof window === "undefined") return;
 
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    const pathName = router.pathname;
+    const ul = document.getElementById("navbarCollapse");
+    if (!ul) return;
+
+    const items = ul.getElementsByTagName("a");
     removeActivation(items);
-    for (var i = 0; i < items.length; ++i) {
-      // Compare with the href attribute of the <a> tag
+
+    let matchingMenuItem = null;
+    for (let i = 0; i < items.length; ++i) {
       const itemPath = new URL(items[i].href).pathname;
       if (pathName === itemPath) {
         matchingMenuItem = items[i];
         break;
       }
     }
-    if (matchingMenuItem) {
-      activateParentDropdown(matchingMenuItem);
-    }
-  }, [router.pathname]); // Update dependency href router.pathname
+    if (matchingMenuItem) activateParentDropdown(matchingMenuItem);
+  }, [router.pathname]);
 
-  function activateParentDropdown(item) {
-    item.classList.add("active");
-    const parent = item.parentElement.parentElement.parentElement;
-
-    if (parent) {
-      parent.classList.add("active"); // li
-      const parent2 = parent.parentElement;
-      parent2.classList.add("active"); // li
-      const parent3 = parent2.parentElement;
-      if (parent3) {
-        parent3.classList.add("active"); // li
-        const parent4 = parent3.parentElement;
-        if (parent4) {
-          parent4.classList.add("active"); // li
-          const parent5 = parent4.parentElement;
-          if (parent5) {
-            parent5.classList.add("active"); // li
-            const parent6 = parent5.parentElement;
-            if (parent6) {
-              parent6.classList.add("active"); // li
-            }
-          }
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("/api/auth/me", {
+          method: "GET",
+          credentials: "include",
+        });
+        const data = await response.json();
+        if (response.ok) {
+          setUserData(data);
+        } else {
+          setUserData(null);
         }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setUserData(null);
       }
-    }
-    return false;
-  }
+    };
 
-  // Handle sign-out
-  const handleSignOut = async () => {
-    setMessage("");
-    try {
-      const response = await fetch("/api/auth/signout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    if (typeof window !== "undefined") fetchUserData();
+  }, [router.asPath]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !isAuthenticated || !userId) return;
+
+    if (!socketInitialized.current) {
+      socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, { withCredentials: true });
+
+      socket.on("connect", () => {
+        console.log("Connected to WebSocket server:", socket.id);
+        socket.emit("join", userId);
       });
 
-      const data = await response.json();
-      if (response.ok) {
-        setUserData(null);
-        setUserProfile(false);
-        setIsAuthenticated(false);
-        setUserId(null);
+      socket.on("newNotification", (message) => {
+        console.log("New notification received:", message);
+        setNotifications((prev) => [message, ...prev]);
+        toast.info("New notification received!");
+      });
 
-        setHasBeenAuthenticated(false); // Reset authentication tracking
-        setNotifications([]);
-        setMessage(data.message);
-        setTimeout(() => {
-          router.push("/signout");
-        }, 1000);
-      } else {
-        setMessage(data.message || "Failed to sign out");
-      }
-    } catch (error) {
-      setMessage("Failed to sign out. Please try again.");
+      socket.on("connect_error", (error) => {
+        console.error("WebSocket connection error:", error);
+        toast.error("Failed to connect to notification server.");
+      });
+
+      socket.on("disconnect", () => {
+        console.log("Disconnected from WebSocket server");
+      });
+
+      socketInitialized.current = true;
+
+      return () => {
+        socket.disconnect();
+        socketInitialized.current = false;
+      };
+    }
+  }, [isAuthenticated, userId]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") fetchUserId();
+  }, [fetchUserId]); // Added fetchUserId as dependency
+
+  // Helper functions
+  const removeActivation = (items) => {
+    for (let i = 0; i < items.length; ++i) {
+      const item = items[i];
+      const parent = item.parentElement;
+      if (item && item.classList.contains("active")) item.classList.remove("active");
+      if (parent && parent.classList.contains("active")) parent.classList.remove("active");
     }
   };
 
-  // Refresh token if access token is expired
+  const activateParentDropdown = (item) => {
+    item.classList.add("active");
+    let parent = item.parentElement?.parentElement?.parentElement;
+    while (parent) {
+      parent.classList.add("active");
+      parent = parent.parentElement;
+    }
+  };
+
   const refreshToken = async () => {
     try {
       const response = await fetch("/api/auth/refresh", {
@@ -1252,30 +1227,55 @@ const NavBar = (props) => {
         credentials: "include",
       });
       const data = await response.json();
-      if (response.ok) {
-        console.log("Token refreshed successfully");
-        return true;
-      } else {
-        console.error("Failed to refresh token:", data.message);
-        return false;
-      }
+      return response.ok;
     } catch (error) {
       console.error("Error refreshing token:", error);
       return false;
     }
   };
 
-  // Notification logic
+  const handleSignOut = useCallback(async () => {
+    setMessage("");
+    try {
+      const response = await fetch("/api/auth/signout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setUserData(null);
+        setUserProfile(false);
+        setIsAuthenticated(false);
+        setUserId(null);
+        setHasBeenAuthenticated(false);
+        setNotifications([]);
+        setMessage(data.message);
+        setTimeout(() => router.push("/signout"), 1000);
+      } else {
+        setMessage(data.message || "Failed to sign out");
+      }
+    } catch (error) {
+      setMessage("Failed to sign out. Please try again.");
+    }
+  }, [
+    router,
+    setMessage,
+    setUserData,
+    setUserProfile,
+    setIsAuthenticated,
+    setUserId,
+    setHasBeenAuthenticated,
+    setNotifications,
+  ]);
+
   const checkAuth = useCallback(async () => {
     try {
       const response = await fetch("/api/auth/me", {
         method: "GET",
         credentials: "include",
       });
-      console.log("Response from /api/auth/me:", response.status, response.statusText);
       if (response.ok) {
         const data = await response.json();
-        console.log("User data:", data);
         setUserId(data.id);
         setIsAuthenticated(true);
         setHasBeenAuthenticated(true);
@@ -1307,21 +1307,17 @@ const NavBar = (props) => {
         }
       } else {
         setIsAuthenticated(false);
-        if (hasBeenAuthenticated) {
-          toast.error("Unauthorized: Please sign in to view notifications");
-        }
+        if (hasBeenAuthenticated) toast.error("Unauthorized: Please sign in.");
       }
     } catch (error) {
       console.error("Error checking auth:", error);
       setIsAuthenticated(false);
-      if (hasBeenAuthenticated) {
-        toast.error("Failed to authenticate. Please sign in again.");
-      }
+      if (hasBeenAuthenticated) toast.error("Failed to authenticate. Please sign in again.");
     }
-  }, [refreshToken, handleSignOut, hasBeenAuthenticated, setUserId, setIsAuthenticated, setHasBeenAuthenticated]);
+  }, [hasBeenAuthenticated, handleSignOut]);
 
-  const fetchUserId = async () => {
-    if (typeof window === "undefined") return; // Skip on server
+  const fetchUserId = useCallback(async () => {
+    if (typeof window === "undefined") return;
     try {
       const response = await fetch("/api/auth/me", {
         method: "GET",
@@ -1334,144 +1330,9 @@ const NavBar = (props) => {
     } catch (error) {
       console.error("Failed to fetch user ID:", error);
     }
-  };
+  }, [setUserId]); // Added setUserId as dependency
 
-  // const fetchNotifications = useCallback(async () => {
-  //   if (!isAuthenticated || !userId) return;
-
-  //   setLoading(true);
-  //   setError("");
-  //   try {
-  //     const response = await fetch("/api/notifications", {
-  //       method: "GET",
-  //       credentials: "include",
-  //     });
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setNotifications(data.notifications || []);
-  //     } else if (response.status === 401) {
-  //       const refreshed = await refreshToken();
-  //       if (refreshed) {
-  //         const retryResponse = await fetch("/api/notifications", {
-  //           method: "GET",
-  //           credentials: "include",
-  //         });
-  //         if (retryResponse.ok) {
-  //           const retryData = await retryResponse.json();
-  //           setNotifications(retryData.notifications || []);
-  //         } else {
-  //           setError("Session expired. Please sign in again.");
-  //           setIsAuthenticated(false);
-  //           setUserData(null);
-  //           setUserId(null);
-  //           if (hasBeenAuthenticated) {
-  //             toast.error("Session expired. Please sign in again.");
-  //           }
-  //           router.push("/signin");
-  //         }
-  //       } else {
-  //         setError("Session expired. Please sign in again.");
-  //         setIsAuthenticated(false);
-  //         setUserData(null);
-  //         setUserId(null);
-  //         if (hasBeenAuthenticated) {
-  //           toast.error("Session expired. Please sign in again.");
-  //         }
-  //         router.push("/signin");
-  //       }
-  //     } else {
-  //       setError("Failed to fetch notifications");
-  //       if (hasBeenAuthenticated) {
-  //         toast.error("Failed to fetch notifications");
-  //       }
-  //     }
-  //   } catch (err) {
-  //     setError("Failed to fetch notifications. Please try again.");
-  //     if (hasBeenAuthenticated) {
-  //       toast.error("Failed to fetch notifications. Please try again.");
-  //     }
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }, [isAuthenticated, userId, router, hasBeenAuthenticated]);
-
-  // useEffect(() => {
-  //   checkAuth();
-  // }, []);
-
-  // Fetch user data on component mount and when route changes
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch("/api/auth/me", {
-          method: "GET",
-          credentials: "include",
-        });
-        const data = await response.json();
-        if (response.ok) {
-          setUserData(data);
-        } else {
-          setUserData(null);
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setUserData(null);
-      } finally {
-        // setIsLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, [router.asPath]);
-
-  // Handle sign-in button click
-  const handleSignIn = () => {
-    router.push("/signin");
-  };
-
-  // Initialize WebSocket (Updated)
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-    checkAuth();
-
-    if (isAuthenticated && userId && !socketInitialized.current) {
-      socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, {
-        withCredentials: true,
-      });
-
-      socket.on("connect", () => {
-        console.log("Connected to WebSocket server:", socket.id);
-        socket.emit("join", userId);
-      });
-
-      socket.on("newNotification", (message) => {
-        console.log("New notification received:", message);
-        setNotifications((prev) => [message, ...prev]);
-        toast.info("New notification received!");
-      });
-
-      socket.on("connect_error", (error) => {
-        console.error("WebSocket connection error:", error);
-        toast.error("Failed to connect to notification server.");
-      });
-
-      socket.on("disconnect", () => {
-        console.log("Disconnected from WebSocket server");
-      });
-
-      socketInitialized.current = true;
-
-      return () => {
-        socket.disconnect();
-        socketInitialized.current = false;
-      };
-    }
-  }, [isAuthenticated, userId, checkAuth]);
-
-  // Removed: fetchNotifications function and its useEffect hook
-  // Removed: loading and error states
+  const handleSignIn = () => router.push("/signin");
 
   const markAsRead = async (notificationId) => {
     try {
@@ -1482,9 +1343,7 @@ const NavBar = (props) => {
       });
       if (response.ok) {
         setNotifications((prev) =>
-          prev.map((notif) =>
-            notif._id === notificationId ? { ...notif, isRead: true } : notif
-          )
+          prev.map((notif) => (notif._id === notificationId ? { ...notif, isRead: true } : notif))
         );
         toast.success("Notification marked as read");
       } else {
@@ -1542,7 +1401,8 @@ const NavBar = (props) => {
 
   const unreadCount = notifications.filter((notif) => !notif.isRead).length;
 
-  if (typeof window === "undefined") {
+  // Render logic
+  if (typeof window === "undefined" || !auth) {
     return (
       <nav className="navbar navbar-expand-lg fixed-top sticky p-0">
         <Container fluid className="custom-container">
