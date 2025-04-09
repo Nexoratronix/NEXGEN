@@ -12,7 +12,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { Spinner } from "reactstrap"; 
-import styles from "./TopBar.module.css"; 
+// import styles from "./TopBar.module.css";
+import styles from "@/Layout/CommonLayout/TopBar.module.css" 
 import Image from "next/image";
 // Import images
 import flagUs from "../../assets/images/flags/us.jpg";
