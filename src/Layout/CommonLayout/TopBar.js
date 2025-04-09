@@ -21,8 +21,10 @@ import flagGr from "../../assets/images/flags/germany.jpg";
 import flagIt from "../../assets/images/flags/italy.jpg";
 import flagRu from "../../assets/images/flags/russia.jpg";
 import useLoadingStore from "@/store/loading";
+import { AuthContext } from "@/pages/_app";
 
 const TopBar = () => {
+  const { auth, setAuth } = useContext(AuthContext) || { auth: null, setAuth: () => {} };
   const iconTobar = [
     { id: 1, classname: "uil uil-whatsapp" },
     { id: 2, classname: "uil uil-facebook-messenger-alt" },
@@ -40,37 +42,7 @@ const TopBar = () => {
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   // const { isLoading } = useLoadingStore();
 
-  if (typeof window === "undefined" || isLoading) {
-    return null; // Prevent SSR rendering
-  }
-  const handleSignOut = async () => {
-    setMessage("");
-    setLoading(true);
 
-    try {
-      const response = await fetch("/api/auth/signout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setMessage(data.message);
-        setTimeout(() => {
-          router.push("/signout");
-        }, 1000);
-      } else {
-        setMessage(data.message || "Failed to sign out");
-      }
-    } catch (error) {
-      setMessage("Failed to sign out. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-// In NavBar.js, wrap the component with a check
 if (typeof window === "undefined") {
   return (
     <nav className="navbar navbar-expand-lg fixed-top sticky p-0">

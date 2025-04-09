@@ -1,4 +1,3 @@
-// pages/_app.js
 import CommonLayout from '../../src/Layout/CommonLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -35,6 +34,7 @@ function AuthWrapper({ children }) {
         const decoded = require('jsonwebtoken').verify(accessToken, process.env.NEXTAUTH_SECRET);
         setAuth(decoded);
       } catch (error) {
+        console.error('Failed to verify token:', error);
         setAuth(null);
       }
     }

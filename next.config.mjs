@@ -20,12 +20,13 @@ const nextConfig = {
     return config;
   },
   eslint: {
-    // Ignore ESLint during builds on Vercel to avoid unescaped entities issues
+    
     ignoreDuringBuilds: true,
     rules: {
       'react/no-unescaped-entities': 'off', // Valid severity level
     },
   },
+  productionBrowserSourceMaps: true,
 };
 
 export default nextConfig;

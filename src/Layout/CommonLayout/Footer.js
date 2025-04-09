@@ -3,8 +3,10 @@ import { Row, Col, Container } from "reactstrap";
 import Link from "next/link";
 import Image from "next/image";
 import whiteLogo from "../../assets/images/logo/NexGenlogowithbg.png";
+import { AuthContext } from "@/pages/_app";
 
 const Footer = () => {
+  const { auth, setAuth } = useContext(AuthContext) || { auth: null, setAuth: () => {} };
   if (typeof window === "undefined") return null;
   const footer = [
     {
