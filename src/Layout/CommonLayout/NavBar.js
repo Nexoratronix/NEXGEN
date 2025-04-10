@@ -169,9 +169,9 @@ const NavBar = (props) => {
     };
   }, [isAuthenticated, userId]);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") fetchUserId();
-  // }, []); // Added fetchUserId as dependecy 
+  useEffect(() => {
+    if (typeof window !== "undefined") fetchUserId();
+  }, []); // Added fetchUserId as dependecy 
 
   // Helper functions
   const removeActivation = (items) => {
