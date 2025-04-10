@@ -134,9 +134,11 @@ const NavBar = (props) => {
   
     socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, {
       withCredentials: true,
-      reconnection: true, // Enable reconnection
-      reconnectionAttempts: 5, // Retry 5 times
-      reconnectionDelay: 1000, // Wait 1s between retries
+      reconnection: true,
+      reconnectionAttempts: 10, // Increase attempts
+      reconnectionDelay: 2000, // Increase delay to 2s
+      timeout: 10000, // Increase timeout to 10s
+      transports: ["websocket", "polling"], // Ensure both transports are tried
     });
   
     socket.on("connect", () => {
@@ -167,9 +169,9 @@ const NavBar = (props) => {
     };
   }, [isAuthenticated, userId]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") fetchUserId();
-  }, []); // Added fetchUserId as dependecy 
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") fetchUserId();
+  // }, []); // Added fetchUserId as dependecy 
 
   // Helper functions
   const removeActivation = (items) => {
