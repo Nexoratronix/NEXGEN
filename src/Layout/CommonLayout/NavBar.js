@@ -130,38 +130,41 @@ const NavBar = (props) => {
   }, [router.asPath]);
 
   useEffect(() => {
-    // if (typeof window === "undefined" || !isAuthenticated || !userId) return;
-
-    if (!socketInitialized.current) {
-      socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, { withCredentials: true });
-
-      socket.on("connect", () => {
-        console.log("Connected to WebSocket server:", socket.id);
-        socket.emit("join", userId);
-      });
-
-      socket.on("newNotification", (message) => {
-        console.log("New notification received:", message);
-        setNotifications((prev) => [message, ...prev]);
-        toast.info("New notification received!");
-      });
-
-      socket.on("connect_error", (error) => {
-        console.error("WebSocket connection error:", error);
-        toast.error("Failed to connect to notification server.");
-      });
-
-      socket.on("disconnect", () => {
-        console.log("Disconnected from WebSocket server");
-      });
-
-      socketInitialized.current = true;
-
-      return () => {
-        socket.disconnect();
-        socketInitialized.current = false;
-      };
-    }
+    if (!isAuthenticated || !userId || socketInitialized.current) return;
+  
+    socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, {
+      withCredentials: true,
+      reconnection: true, // Enable reconnection
+      reconnectionAttempts: 5, // Retry 5 times
+      reconnectionDelay: 1000, // Wait 1s between retries
+    });
+  
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server:", socket.id);
+      socket.emit("join", userId);
+    });
+  
+    socket.on("newNotification", (message) => {
+      console.log("New notification received:", message);
+      setNotifications((prev) => [message, ...prev]);
+      toast.info("New notification received!");
+    });
+  
+    socket.on("connect_error", (error) => {
+      console.error("WebSocket connection error:", error.message);
+      toast.error("Failed to connect to notification server.");
+    });
+  
+    socket.on("disconnect", (reason) => {
+      console.log("Disconnected from WebSocket server:", reason);
+    });
+  
+    socketInitialized.current = true;
+  
+    return () => {
+      socket.disconnect();
+      socketInitialized.current = false;
+    };
   }, [isAuthenticated, userId]);
 
   useEffect(() => {
