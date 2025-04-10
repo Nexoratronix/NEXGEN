@@ -169,7 +169,7 @@ const NavBar = (props) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") fetchUserId();
-  }, []); // Added fetchUserId as dependency
+  }, []); // Added fetchUserId as dependecy 
 
   // Helper functions
   const removeActivation = (items) => {
