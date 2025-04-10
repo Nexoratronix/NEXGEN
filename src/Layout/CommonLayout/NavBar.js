@@ -152,7 +152,7 @@ const NavBar = (props) => {
   
     socket.on("connect_error", (error) => {
       console.error("WebSocket connection error:", error.message);
-      toast.error("Failed to connect to notification server.");
+      toast.error(`Failed to connect to notification server.:${error.message}`);
     });
   
     socket.on("disconnect", (reason) => {
