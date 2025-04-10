@@ -7,7 +7,12 @@ import { AuthContext } from "@/pages/_app";
 
 const Footer = () => {
   const { auth, setAuth } = useContext(AuthContext) || { auth: null, setAuth: () => {} };
-  if (typeof window === "undefined") return null;
+  if (typeof window === "undefined") {
+  return(
+    <p>footer hu </p>
+  )
+
+  } 
   const footer = [
     {
       id: 1,

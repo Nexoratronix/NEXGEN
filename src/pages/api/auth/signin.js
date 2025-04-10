@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import { nanoid } from "nanoid";
 import { serialize } from "cookie";
 import { ObjectId } from "mongodb";
+import { createClient } from "redis";
 import { setSession } from "../../../lib/session";
 export default async function handler(req, res) {
   if (req.method !== "POST") {

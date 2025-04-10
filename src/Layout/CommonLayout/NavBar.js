@@ -43,20 +43,20 @@ const NavBar = (props) => {
   const [pages, setPages] = useState(false);
   const [blog, setBlog] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [hasBeenAuthenticated, setHasBeenAuthenticated] = useState(false);
   const [userProfile, setUserProfile] = useState(false);
   const [navClass, setNavClass] = useState(false);
   const socketInitialized = useRef(false);
-
+ 
   // Toggle functions
   const toggle = () => setIsOpen(!isOpen);
   const dropDownNotification = () => setNotificationOpen((prevState) => !prevState);
-  const dropDownUserProfile = () => setUserProfile((prevState) => !prevState);
-
-  // All useEffect hooks
+  const dropDownuserprofile = () => setUserProfile((prevState) => !prevState);
+                                                                                                                                                                                                     
+  // All useEffect hooks    
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    // if (typeof window === "undefined") return;
 
     const accessToken = document.cookie
       .split("; ")
@@ -74,7 +74,7 @@ const NavBar = (props) => {
   }, [auth, setAuth]);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    // if (typeof window === "undefined") return;
 
     const handleScroll = () => {
       const scrollup = window.pageYOffset;
@@ -86,7 +86,7 @@ const NavBar = (props) => {
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    // if (typeof window === "undefined") return;
 
     window.scrollTo({ top: 0, behavior: "smooth" });
     const pathName = router.pathname;
@@ -130,7 +130,7 @@ const NavBar = (props) => {
   }, [router.asPath]);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !isAuthenticated || !userId) return;
+    // if (typeof window === "undefined" || !isAuthenticated || !userId) return;
 
     if (!socketInitialized.current) {
       socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, { withCredentials: true });
@@ -166,7 +166,7 @@ const NavBar = (props) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") fetchUserId();
-  }, [fetchUserId]); // Added fetchUserId as dependency
+  }, []); // Added fetchUserId as dependency
 
   // Helper functions
   const removeActivation = (items) => {
@@ -284,7 +284,7 @@ const NavBar = (props) => {
   }, [hasBeenAuthenticated, handleSignOut]);
 
   const fetchUserId = useCallback(async () => {
-    if (typeof window === "undefined") return;
+    // if (typeof window === "undefined") return;
     try {
       const response = await fetch("/api/auth/me", {
         method: "GET",
@@ -369,7 +369,7 @@ const NavBar = (props) => {
   const unreadCount = notifications.filter((notif) => !notif.isRead).length;
 
   // Render logic
-  if (typeof window === "undefined" || !auth) {
+  if (typeof window === "undefined") {
     return (
       <nav className="navbar navbar-expand-lg fixed-top sticky p-0">
         <Container fluid className="custom-container">
