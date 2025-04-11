@@ -7,12 +7,7 @@ import { AuthContext } from "@/pages/_app";
 
 const Footer = () => {
 
-  if (typeof window === "undefined") {
-  return(
-    <p>footer loading... </p>
-  )
 
-  } 
   const footer = [
     {
       id: 1,
@@ -41,6 +36,11 @@ const Footer = () => {
     { id: 4, socialIcon: "uil uil-twitter" },
   ];
 
+  if (typeof window === "undefined") {
+    return (
+     <p>footer loading....</p>
+    );
+  }
   return (
     <React.Fragment>
       <section className="bg-footer">
