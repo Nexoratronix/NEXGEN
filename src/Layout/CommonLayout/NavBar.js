@@ -132,7 +132,7 @@ const NavBar = (props) => {
   useEffect(() => {
     if (!isAuthenticated || !userId || socketInitialized.current) return;
   
-    socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL, {
+    socket = io("https://nexgen-websocket.onrender.com", {
       withCredentials: true,
       reconnection: true,
       reconnectionAttempts: 10, // Increase attempts
