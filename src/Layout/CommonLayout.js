@@ -8,18 +8,20 @@ import Link from "next/link";
 import Image from "next/image";
 import darkLogo from "../assets/images/logo/logo.png";
 import { AuthContext } from "@/pages/_app";
+import TopBar from "./CommonLayout/TopBar";
+import NavBar from "./CommonLayout/NavBar";
 
+ 
 
+// const NavBar = dynamic(() => import("./CommonLayout/NavBar"), {
+//   ssr: false,
+//   loading: () => <div>Loading NavBar...</div>,
+// });
 
-const NavBar = dynamic(() => import("./CommonLayout/NavBar"), {
-  ssr: false,
-  loading: () => <div>Loading NavBar...</div>,
-});
-
-const TopBar = dynamic(() => import("./CommonLayout/TopBar"), {
-  ssr: false,
-  loading: () => <div>Loading TopBar...</div>,
-});
+// const TopBar = dynamic(() => import("./CommonLayout/TopBar"), {
+//   ssr: false,
+//   loading: () => <div>Loading TopBar...</div>,
+// });
 const Footer = dynamic(()=>import('./CommonLayout/TopBar'),{
   ssr: false,
   loading: () => <div>Loading footer...</div>,

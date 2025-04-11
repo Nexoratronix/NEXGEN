@@ -393,17 +393,17 @@ const NavBar = (props) => {
     if (typeof window !== "undefined") fetchUserId();
   }, []); // Added fetchUserId as dependecy 
   // Render logic
-  if (typeof window === "undefined") {
-    return (
-      <nav className="navbar navbar-expand-lg fixed-top sticky p-0">
-        <Container fluid className="custom-container">
-          <Link href="/" className="navbar-brand text-dark fw-bold me-auto">
-            <Image src={darkLogo} height="80" alt="" className="logo-dark" style={{ height: "6rem", width: "6rem" }} />
-          </Link>
-        </Container>
-      </nav>
-    );
-  }
+  // if (typeof window === "undefined") {
+  //   return (
+  //     <nav className="navbar navbar-expand-lg fixed-top sticky p-0">
+  //       <Container fluid className="custom-container">
+  //         <Link href="/" className="navbar-brand text-dark fw-bold me-auto">
+  //           <Image src={darkLogo} height="80" alt="" className="logo-dark" style={{ height: "6rem", width: "6rem" }} />
+  //         </Link>
+  //       </Container>
+  //     </nav>
+  //   );
+  // }
   return (
     <React.Fragment>
       <nav

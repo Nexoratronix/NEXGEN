@@ -41,11 +41,11 @@ function MyApp({ Component, pageProps, authFromServer }) {
   }, [auth, setAuth]);
 
       // Render logic
-  if (typeof window === "undefined") {
-    return (
-     <p>appp </p>
-    );
-  }
+  // if (typeof window === "undefined") {
+  //   return (
+  //    <p>appp </p>
+  //   );
+  // }
   return (
     <>
       <Head>
