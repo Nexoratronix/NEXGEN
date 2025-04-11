@@ -6,10 +6,10 @@ import whiteLogo from "../../assets/images/logo/NexGenlogowithbg.png";
 import { AuthContext } from "@/pages/_app";
 
 const Footer = () => {
-  const { auth, setAuth } = useContext(AuthContext) || { auth: null, setAuth: () => {} };
+
   if (typeof window === "undefined") {
   return(
-    <p>footer hu </p>
+    <p>footer loading... </p>
   )
 
   } 
