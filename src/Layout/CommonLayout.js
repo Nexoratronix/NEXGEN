@@ -20,7 +20,7 @@ const TopBar = dynamic(() => import("./CommonLayout/TopBar"), {
   ssr: false,
   loading: () => <div>Loading TopBar...</div>,
 });
-const Footer = dynamic(()=>import('./CommonLayout/TopBar'),{
+const Footer = dynamic(()=>import('./CommonLayout/Footer'),{
   ssr: false,
   loading: () => <div>Loading footer...</div>,
 } )
