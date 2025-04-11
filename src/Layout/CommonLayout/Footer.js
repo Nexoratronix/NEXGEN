@@ -152,8 +152,8 @@ const Footer = () => {
               <p className="text-white-50 text-center mb-0">
                 {new Date().getFullYear()} © NEXGEN Staffing. All Rights Reserved.
                 <Link
-                  to="/"
-                  target="_blank"
+                  href="/"
+                  // target="_blank"
                   className="text-reset text-decoration-underline ms-1"
                 >
                   Terms & Conditions

@@ -22,7 +22,7 @@ import NavBar from "./CommonLayout/NavBar";
 //   ssr: false,
 //   loading: () => <div>Loading TopBar...</div>,
 // });
-const Footer = dynamic(()=>import('./CommonLayout/Footer'),{
+const Footer = dynamic(()=>import('./CommonLayout/TopBar'),{
   ssr: false,
   loading: () => <div>Loading footer...</div>,
 } )
