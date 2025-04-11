@@ -729,7 +729,7 @@ const NavBar = (props) => {
                   >
                     <div className="notification-header border-bottom bg-light p-3">
                       <div className="d-flex justify-content-between align-items-center">
-                        <h6 className="mb-0">Notifications</h6>
+                        <h6 className="">Notifications</h6>
                         {unreadCount > 0 && (
                           <Button
                             color="link"
