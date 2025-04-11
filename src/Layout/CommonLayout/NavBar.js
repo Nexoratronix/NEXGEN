@@ -128,50 +128,60 @@ const NavBar = (props) => {
 
     if (typeof window !== "undefined") fetchUserData();
   }, [router.asPath]);
-
   useEffect(() => {
     if (!isAuthenticated || !userId || socketInitialized.current) return;
   
     socket = io("https://nexgen-websocket.onrender.com", {
       withCredentials: true,
       reconnection: true,
-      reconnectionAttempts: 10, // Increase attempts
-      reconnectionDelay: 2000, // Increase delay to 2s
-      timeout: 10000, // Increase timeout to 10s
-      transports: ["websocket", "polling"], // Ensure both transports are tried
+      reconnectionAttempts: Infinity, // Unlimited attempts
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      timeout: 20000,
+      transports: ["websocket", "polling"],
     });
   
     socket.on("connect", () => {
       console.log("Connected to WebSocket server:", socket.id);
-      socket.emit("join", userId);
+      if (userId) socket.emit("join", userId); // Ensure userId is available
     });
   
     socket.on("newNotification", (message) => {
       console.log("New notification received:", message);
-      setNotifications((prev) => [message, ...prev]);
+      setNotifications((prev) => [message, ...prev].slice(0, 10)); // Limit to 10 notifications
       toast.info("New notification received!");
     });
   
     socket.on("connect_error", (error) => {
       console.error("WebSocket connection error:", error.message);
-      toast.error(`Failed to connect to notification server.:${error.message}`);
+      toast.error(`Failed to connect to notification server: ${error.message}`);
     });
   
     socket.on("disconnect", (reason) => {
       console.log("Disconnected from WebSocket server:", reason);
     });
   
+    socket.on("reconnect", (attempt) => {
+      console.log("Reconnected after attempt:", attempt);
+      if (userId) socket.emit("join", userId); // Rejoin on reconnect
+    });
+  
     socketInitialized.current = true;
   
     return () => {
-      socket.disconnect();
+      if (socket) {
+        socket.off("connect");
+        socket.off("newNotification");
+        socket.off("connect_error");
+        socket.off("disconnect");
+        socket.off("reconnect");
+        socket.disconnect();
+      }
       socketInitialized.current = false;
     };
-  }, [isAuthenticated, userId]);
+  }, [isAuthenticated, userId]); // Depend on both for re-initialization
 
-  useEffect(() => {
-    if (typeof window !== "undefined") fetchUserId();
-  }, []); // Added fetchUserId as dependecy 
+ 
 
   // Helper functions
   const removeActivation = (items) => {
@@ -222,6 +232,7 @@ const NavBar = (props) => {
         setHasBeenAuthenticated(false);
         setNotifications([]);
         setMessage(data.message);
+        if (socket) socket.disconnect(); // Explicit disconnect
         setTimeout(() => router.push("/signout"), 1000);
       } else {
         setMessage(data.message || "Failed to sign out");
@@ -289,7 +300,7 @@ const NavBar = (props) => {
   }, [hasBeenAuthenticated, handleSignOut]);
 
   const fetchUserId = useCallback(async () => {
-    // if (typeof window === "undefined") return;
+    if (typeof window === "undefined") return;
     try {
       const response = await fetch("/api/auth/me", {
         method: "GET",
@@ -298,11 +309,12 @@ const NavBar = (props) => {
       const data = await response.json();
       if (response.ok) {
         setUserId(data.id);
+        if (socket && socket.connected) socket.emit("join", data.id); // Join immediately if connected
       }
     } catch (error) {
       console.error("Failed to fetch user ID:", error);
     }
-  }, [setUserId]); // Added setUserId as dependency
+  }, [setUserId]); // Keep dependency
 
   const handleSignIn = () => router.push("/signin");
 
@@ -372,7 +384,14 @@ const NavBar = (props) => {
   };
 
   const unreadCount = notifications.filter((notif) => !notif.isRead).length;
-
+  useEffect(() => {
+    const checkAuthInterval = setInterval(checkAuth, 30000); // Check every 30s
+    checkAuth(); // Initial check
+    return () => clearInterval(checkAuthInterval);
+  }, [checkAuth, hasBeenAuthenticated]);
+  useEffect(() => {
+    if (typeof window !== "undefined") fetchUserId();
+  }, []); // Added fetchUserId as dependecy 
   // Render logic
   if (typeof window === "undefined") {
     return (
